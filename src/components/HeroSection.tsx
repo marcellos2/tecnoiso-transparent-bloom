@@ -1,40 +1,139 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import slide1 from "@/assets/slide1-precision.jpg";
+import slide2 from "@/assets/slide2-calibration.jpg";
+import slide3 from "@/assets/slide3-certification.jpg";
 
 const HeroSection = () => {
-  return (
-    <section id="home" className="min-h-screen hero-bg flex items-center justify-center relative">
-      {/* Hero Content */}
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--hero-text))] mb-6 leading-tight">
-            Precisão,
-            <br />
-            confiabilidade e
-            <br />
-            excelência em
-            <br />
-            <span className="text-[hsl(var(--brand-red))]">metrologia.</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-[hsl(var(--hero-text))] mb-8 max-w-2xl opacity-90">
-            Soluções completas em calibração, certificação e serviços metrológicos 
-            para garantir a qualidade e conformidade dos seus equipamentos.
-          </p>
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slides = [
+    {
+      image: slide1,
+      title: "Precisão,",
+      subtitle: "confiabilidade e",
+      highlight: "excelência em",
+      accent: "metrologia.",
+      description: "Soluções completas em calibração, certificação e serviços metrológicos para garantir a qualidade e conformidade dos seus equipamentos."
+    },
+    {
+      image: slide2,
+      title: "Calibração",
+      subtitle: "de alta precisão",
+      highlight: "com certificação",
+      accent: "INMETRO.",
+      description: "Laboratório acreditado oferecendo serviços de calibração com rastreabilidade garantida e certificados reconhecidos nacionalmente."
+    },
+    {
+      image: slide3,
+      title: "Certificação",
+      subtitle: "e consultoria",
+      highlight: "em sistemas de",
+      accent: "qualidade.",
+      description: "Assessoria especializada para implementação de normas ISO e sistemas de gestão da qualidade para sua empresa."
+    }
+  ];
 
-          <Button 
-            size="lg" 
-            className="bg-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))]/90 text-[hsl(var(--brand-white))] px-8 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-300 hover:scale-105"
-          >
-            CONHEÇA NOSSOS SERVIÇOS
-            <ChevronRight className="ml-2" size={20} />
-          </Button>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  return (
+    <section id="home" className="min-h-screen relative overflow-hidden">
+      {/* Background Slider */}
+      <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 hero-bg transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-[hsl(var(--brand-white))]/20 backdrop-blur-sm rounded-full flex items-center justify-center text-[hsl(var(--hero-text))] hover:bg-[hsl(var(--brand-red))]/80 transition-all duration-300 hover:scale-110"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      
+      <button
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-[hsl(var(--brand-white))]/20 backdrop-blur-sm rounded-full flex items-center justify-center text-[hsl(var(--hero-text))] hover:bg-[hsl(var(--brand-red))]/80 transition-all duration-300 hover:scale-110"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Hero Content */}
+      <div className="container mx-auto px-4 py-20 relative z-10 hero-content min-h-screen flex items-center justify-center">
+        <div className="max-w-4xl text-center">
+          <div key={currentSlide} className="animate-fade-in">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--hero-text))] mb-6 leading-tight">
+              {slides[currentSlide].title}
+              <br />
+              {slides[currentSlide].subtitle}
+              <br />
+              {slides[currentSlide].highlight}
+              <br />
+              <span className="text-[hsl(var(--brand-red))] animate-glow">
+                {slides[currentSlide].accent}
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-[hsl(var(--hero-text))] mb-8 max-w-3xl mx-auto opacity-90 animate-slide-up">
+              {slides[currentSlide].description}
+            </p>
+
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
+            >
+              CONHEÇA NOSSOS SERVIÇOS
+              <ChevronRight className="ml-2" size={20} />
+            </Button>
+          </div>
         </div>
       </div>
 
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-[hsl(var(--brand-red))] scale-125 pulse-red' 
+                : 'bg-[hsl(var(--brand-white))]/50 hover:bg-[hsl(var(--brand-white))]/80'
+            }`}
+          />
+        ))}
+      </div>
+
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-1 h-16 bg-[hsl(var(--brand-white))]/50 rounded-full">
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
+        <div className="w-1 h-16 bg-[hsl(var(--brand-white))]/30 rounded-full">
           <div className="w-1 h-8 bg-[hsl(var(--brand-red))] rounded-full animate-pulse"></div>
         </div>
       </div>

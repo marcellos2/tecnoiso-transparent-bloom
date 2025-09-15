@@ -29,27 +29,35 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contato" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Entre em <span className="text-[hsl(var(--brand-red))]">Contato</span>
-          </h2>
+    <section id="contato" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-red))]/5 to-transparent rounded-full blur-2xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="relative inline-block">
+            <div className="absolute -top-3 -right-3 w-20 h-20 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-transparent rounded-full blur-xl"></div>
+            <h2 className="relative text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Entre em <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text">Contato</span>
+            </h2>
+          </div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Estamos prontos para atender suas necessidades em metrologia. 
             Entre em contato conosco e solicite seu orçamento.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 animate-scale-in">
           {/* Contact Form */}
-          <Card className="border-0 shadow-[var(--shadow-elegant)]">
-            <CardHeader>
+          <Card className="border-0 shadow-[var(--shadow-red-soft)] backdrop-blur-sm bg-gradient-to-br from-card to-[hsl(var(--brand-red))]/5 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[hsl(var(--brand-red))]/5 to-transparent opacity-50"></div>
+            <CardHeader className="relative z-10">
               <CardTitle className="text-2xl font-bold text-foreground">
                 Solicite seu Orçamento
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 relative z-10">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
@@ -99,7 +107,7 @@ const ContactSection = () => {
 
               <Button 
                 size="lg" 
-                className="w-full bg-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))]/90 text-[hsl(var(--brand-white))] font-semibold shadow-[var(--shadow-red)] transition-all duration-300 hover:scale-[1.02]"
+                className="w-full bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[var(--shadow-glow)]"
               >
                 Enviar Mensagem
               </Button>

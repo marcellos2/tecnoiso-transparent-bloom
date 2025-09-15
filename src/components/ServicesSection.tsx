@@ -43,23 +43,32 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="servicos" className="py-20 bg-muted/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Nossos <span className="text-[hsl(var(--brand-red))]">Serviços</span>
-          </h2>
+    <section id="servicos" className="py-20 bg-gradient-to-b from-[hsl(var(--brand-gray))] to-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))]/5 to-transparent rounded-full blur-2xl"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="relative inline-block">
+            <div className="absolute -top-2 -left-2 w-16 h-16 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-transparent rounded-full blur-xl"></div>
+            <h2 className="relative text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Nossos <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text">Serviços</span>
+            </h2>
+          </div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Oferecemos uma ampla gama de serviços especializados em metrologia, 
             calibração e certificação para atender todas as necessidades do seu negócio.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-scale-in">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border-0 bg-card">
-              <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-[hsl(var(--brand-red))]/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-[hsl(var(--brand-red))]/20 transition-colors duration-300">
+            <Card key={index} className="group hover:shadow-[var(--shadow-red)] transition-all duration-500 hover:-translate-y-3 border-0 bg-card backdrop-blur-sm hover:bg-gradient-to-br hover:from-[hsl(var(--brand-white))] hover:to-[hsl(var(--brand-red))]/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[hsl(var(--brand-red))]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <CardHeader className="text-center pb-4 relative z-10">
+                <div className="w-18 h-18 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-[hsl(var(--brand-red))]/5 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-br group-hover:from-[hsl(var(--brand-red))]/20 group-hover:to-[hsl(var(--brand-red))]/10 transition-all duration-500 group-hover:scale-110 group-hover:shadow-[var(--shadow-red-soft)]">
                   <service.icon className="w-8 h-8 text-[hsl(var(--brand-red))]" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground group-hover:text-[hsl(var(--brand-red))] transition-colors duration-300">

@@ -26,27 +26,30 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="sobre" className="py-20 bg-background">
+    <section id="sobre" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Somos sua melhor escolha em 
-              <span className="text-[hsl(var(--brand-red))]"> calibração, certificação e serviços metrológicos.</span>
-            </h2>
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-transparent rounded-full blur-xl"></div>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in">
+                Somos sua melhor escolha em 
+                <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text"> calibração, certificação e serviços metrológicos.</span>
+              </h2>
+            </div>
             
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed animate-slide-up">
               Com anos de experiência no mercado, a Tecnoiso oferece soluções completas 
               em metrologia, garantindo que seus equipamentos estejam sempre em conformidade 
               com os mais rigorosos padrões de qualidade e precisão.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 gap-6 animate-scale-in">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-[hsl(var(--brand-red))]/10 rounded-lg flex items-center justify-center">
-                    <feature.icon className="w-6 h-6 text-[hsl(var(--brand-red))]" />
+                <div key={index} className="group flex items-start space-x-4 p-4 rounded-lg hover:bg-gradient-to-r hover:from-[hsl(var(--gradient-red-soft))] hover:to-transparent transition-all duration-300 hover:shadow-[var(--shadow-red-soft)]">
+                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-[hsl(var(--brand-red))]/5 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-[hsl(var(--brand-red))]/20 group-hover:to-[hsl(var(--brand-red))]/10 transition-all duration-300 group-hover:scale-110">
+                    <feature.icon className="w-7 h-7 text-[hsl(var(--brand-red))] group-hover:drop-shadow-lg" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
