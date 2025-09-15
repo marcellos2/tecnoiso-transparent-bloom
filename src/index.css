@@ -66,9 +66,12 @@ All colors MUST be HSL.
     --shadow-elegant: 0 8px 30px -8px hsl(0 0% 0% / 0.12);
     --shadow-glow: 0 0 50px hsl(0 91% 55% / 0.3);
     
-    /* Animations */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Animations */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Text utilities */
+  --gradient-text-outline: none;
 
     --radius: 0.5rem;
 
@@ -204,5 +207,15 @@ All colors MUST be HSL.
   
   .pulse-red {
     animation: pulse-red 2s infinite;
+  }
+  
+  /* Fix for gradient text outline issues */
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    outline: none;
+    border: none;
   }
 }

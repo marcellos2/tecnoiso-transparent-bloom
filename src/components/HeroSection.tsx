@@ -96,7 +96,7 @@ const HeroSection = () => {
               <br />
               {slides[currentSlide].highlight}
               <br />
-              <span className="text-[hsl(var(--brand-red))] animate-glow">
+              <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text animate-glow">
                 {slides[currentSlide].accent}
               </span>
             </h1>
