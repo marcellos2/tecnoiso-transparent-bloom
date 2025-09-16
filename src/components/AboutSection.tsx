@@ -40,11 +40,11 @@ const AboutSection = () => {
             </div>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed animate-slide-up">
-              Com anos de experiência no mercado, a Tecnoiso oferece soluções completas 
-              em metrologia, garantindo que seus equipamentos estejam sempre em conformidade 
-              com os mais rigorosos padrões de qualidade e precisão.
+              A Tecnoiso é referência no mercado nacional nos segmentos de calibração, manutenção, automação industrial e gerenciamento metrológico desde 2001.
+Foco na modernidade, inovação, agilidade e atualização constante.
+Equipe altamente qualificada e proatividade são alguns dos diferenciais do nosso capital humano presentes em todos os produtos fabricados.
+Presença nacional e atendimento individualizado é o que torna a Tecnoiso única.
             </p>
-
             <div className="grid sm:grid-cols-2 gap-6 animate-scale-in">
               {features.map((feature, index) => (
                 <div key={index} className="group flex items-start space-x-4 p-4 rounded-lg hover:bg-gradient-to-r hover:from-[hsl(var(--gradient-red-soft))] hover:to-transparent transition-all duration-300 hover:shadow-[var(--shadow-red-soft)]">

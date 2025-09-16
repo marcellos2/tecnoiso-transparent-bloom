@@ -39,12 +39,12 @@ const Header = () => {
             <img 
               src={tecnoIsoLogo} 
               alt="Tecnoiso Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-10">
             {menuItems.map((item) => (
               <a
                 key={item.label}
@@ -59,7 +59,7 @@ const Header = () => {
           {/* Social Media Icons */}
           <div className="hidden lg:flex items-center space-x-4">
             <a 
-              href="#" 
+              href="https://www.instagram.com/tecnoiso/" 
               className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300"
             >
               <Instagram size={20} />
@@ -71,7 +71,7 @@ const Header = () => {
               <Facebook size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://www.linkedin.com/company/tecnoso-tecnologia-e-solu%C3%A7%C3%B5es-industriais-ltda/posts/?feedView=all" 
               className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300"
             >
               <Linkedin size={20} />

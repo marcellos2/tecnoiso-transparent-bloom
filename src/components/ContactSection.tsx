@@ -9,22 +9,22 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Endereço",
-      content: "Rua da Metrologia, 123\nSão Paulo - SP, 01234-567",
+      content: "R. Dona Emma, 1541 - Floresta\nJoinville - SC, 89211-493",
     },
     {
       icon: Phone,
       title: "Telefone",
-      content: "(11) 1234-5678\n(11) 98765-4321",
+      content: "(47) 3438-3175",
     },
     {
       icon: Mail,
       title: "E-mail",
-      content: "contato@tecnoiso.com.br\ncomercial@tecnoiso.com.br",
+      content: "contato@tecnoiso.com.br",
     },
     {
       icon: Clock,
       title: "Horário",
-      content: "Segunda à Sexta\n08:00 às 18:00",
+      content: "Segunda à Sexta\n07:42 às 17:30",
     },
   ];
 
@@ -137,16 +137,32 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="h-64 bg-muted rounded-lg relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-[hsl(var(--brand-red))] mx-auto mb-4" />
-                  <p className="text-muted-foreground">
-                    Mapa da localização da Tecnoiso
-                  </p>
-                </div>
-              </div>
+            {/* Google Maps */}
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.1234567890123!2d-48.83333333333333!3d-26.31666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafe1cfc4c4c1%3A0x1234567890abcdef!2sR.%20Dona%20Emma%2C%201541%20-%20Floresta%2C%20Joinville%20-%20SC%2C%2089211-493!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Localização da Tecnoiso"
+                className="w-full"
+              />
+            </div>
+            
+            {/* Link para abrir no Google Maps */}
+            <div className="text-center">
+              <a
+                href="https://maps.google.com/?q=R.+Dona+Emma,+1541+-+Floresta,+Joinville+-+SC,+89211-493"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 text-[hsl(var(--brand-red))] hover:text-[hsl(var(--brand-red-dark))] transition-colors font-medium"
+              >
+                <MapPin className="w-4 h-4" />
+                <span>Ver no Google Maps</span>
+              </a>
             </div>
           </div>
         </div>

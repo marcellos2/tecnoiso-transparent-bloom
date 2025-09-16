@@ -84,8 +84,7 @@ const HeroSection = () => {
       >
         <ChevronRight size={24} />
       </button>
-
-      {/* Hero Content */}
+ {/* Hero Content */}
       <div className="container mx-auto px-4 py-20 relative z-10 hero-content min-h-screen flex items-center justify-center">
         <div className="max-w-4xl text-center">
           <div key={currentSlide} className="animate-fade-in">
@@ -96,7 +95,7 @@ const HeroSection = () => {
               <br />
               {slides[currentSlide].highlight}
               <br />
-              <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text animate-glow">
+              <span className="text-[hsl(var(--brand-red))] font-bold">
                 {slides[currentSlide].accent}
               </span>
             </h1>
@@ -124,18 +123,11 @@ const HeroSection = () => {
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide 
-                ? 'bg-[hsl(var(--brand-red))] scale-125 pulse-red' 
+                ? 'bg-[hsl(var(--brand-red))] scale-125' 
                 : 'bg-[hsl(var(--brand-white))]/50 hover:bg-[hsl(var(--brand-white))]/80'
             }`}
           />
         ))}
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
-        <div className="w-1 h-16 bg-[hsl(var(--brand-white))]/30 rounded-full">
-          <div className="w-1 h-8 bg-[hsl(var(--brand-red))] rounded-full animate-pulse"></div>
-        </div>
       </div>
     </section>
   );
