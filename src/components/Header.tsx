@@ -56,26 +56,42 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Social Media Icons */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <a 
-              href="https://www.instagram.com/tecnoiso/" 
-              className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300"
+          {/* CTA Button & Social Media Icons */}
+          <div className="hidden lg:flex items-center space-x-6">
+            <Button 
+              variant="outline" 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border-[hsl(var(--brand-red))] text-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))] hover:text-white transition-all duration-300"
             >
-              <Instagram size={20} />
-            </a>
-            <a 
-              href="#" 
-              className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300"
-            >
-              <Facebook size={20} />
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/tecnoso-tecnologia-e-solu%C3%A7%C3%B5es-industriais-ltda/posts/?feedView=all" 
-              className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300"
-            >
-              <Linkedin size={20} />
-            </a>
+              Solicitar Orçamento
+            </Button>
+            
+            <div className="flex items-center space-x-4 border-l border-[hsl(var(--hero-text))]/20 pl-6">
+              <a 
+                href="https://www.instagram.com/tecnoiso/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+              >
+                <Instagram size={20} />
+              </a>
+              <a 
+                href="#" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+              >
+                <Facebook size={20} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/tecnoso-tecnologia-e-solu%C3%A7%C3%B5es-industriais-ltda/posts/?feedView=all" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+              >
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

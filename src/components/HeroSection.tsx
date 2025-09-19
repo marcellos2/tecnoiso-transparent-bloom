@@ -106,6 +106,7 @@ const HeroSection = () => {
 
             <Button 
               size="lg" 
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
             >
               CONHEÇA NOSSOS SERVIÇOS

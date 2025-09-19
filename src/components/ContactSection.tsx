@@ -29,7 +29,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contato" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
+    <section id="contact" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-red))]/5 to-transparent rounded-full blur-2xl"></div>
@@ -137,31 +137,34 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Google Maps */}
-            <div className="rounded-lg overflow-hidden shadow-lg">
+            {/* Enhanced Google Maps */}
+            <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] relative">
+              <div className="absolute top-4 left-4 z-10 bg-[hsl(var(--card))]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md">
+                <p className="text-sm font-medium text-[hsl(var(--foreground))]">📍 Tecnoiso</p>
+              </div>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.1234567890123!2d-48.83333333333333!3d-26.31666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deafe1cfc4c4c1%3A0x1234567890abcdef!2sR.%20Dona%20Emma%2C%201541%20-%20Floresta%2C%20Joinville%20-%20SC%2C%2089211-493!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
                 width="100%"
-                height="300"
+                height="350"
                 style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Localização da Tecnoiso"
-                className="w-full"
+                className="w-full hover:opacity-90 transition-opacity duration-300"
               />
             </div>
             
-            {/* Link para abrir no Google Maps */}
+            {/* Enhanced Link para abrir no Google Maps */}
             <div className="text-center">
               <a
                 href="https://maps.google.com/?q=R.+Dona+Emma,+1541+-+Floresta,+Joinville+-+SC,+89211-493"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-[hsl(var(--brand-red))] hover:text-[hsl(var(--brand-red-dark))] transition-colors font-medium"
+                className="inline-flex items-center space-x-3 bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] text-white px-6 py-3 rounded-xl hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] transition-all duration-300 hover:scale-105 shadow-[var(--shadow-red)] hover:shadow-[var(--shadow-glow)] font-medium"
               >
-                <MapPin className="w-4 h-4" />
-                <span>Ver no Google Maps</span>
+                <MapPin className="w-5 h-5" />
+                <span>Abrir no Google Maps</span>
               </a>
             </div>
           </div>
