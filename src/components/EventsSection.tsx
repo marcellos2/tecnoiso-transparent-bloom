@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Pause, ChevronLeft, ChevronRight, Video } from "lucide-react";
 
 const EventsSection = () => {
   const [currentEvent, setCurrentEvent] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
 
   const events = [
     {
       id: 1,
       title: "Workshop de Calibração Avançada",
       description: "Evento demonstrando técnicas modernas de calibração com equipamentos de alta precisão",
-      thumbnail: "/api/placeholder/600/400",
+      thumbnail: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop&crop=center",
+      videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_1mb.mp4",
       date: "2024 - São Paulo",
       category: "Workshop"
     },
@@ -19,7 +21,8 @@ const EventsSection = () => {
       id: 2,
       title: "Palestra Normas ISO 17025",
       description: "Apresentação sobre implementação e manutenção de sistemas de qualidade em laboratórios",
-      thumbnail: "/api/placeholder/600/400",
+      thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center",
+      videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_2mb.mp4",
       date: "2024 - Rio de Janeiro",
       category: "Palestra"
     },
@@ -27,9 +30,19 @@ const EventsSection = () => {
       id: 3,
       title: "Seminário Metrologia Industrial",
       description: "Discussão sobre as últimas tendências e tecnologias em metrologia para a indústria",
-      thumbnail: "/api/placeholder/600/400",
+      thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center",
+      videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_1mb.mp4",
       date: "2024 - Belo Horizonte",
       category: "Seminário"
+    },
+    {
+      id: 4,
+      title: "Treinamento Instrumentos de Medição",
+      description: "Capacitação prática em uso e manutenção de instrumentos de precisão",
+      thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop&crop=center",
+      videoUrl: "https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_2mb.mp4",
+      date: "2024 - Curitiba",
+      category: "Treinamento"
     }
   ];
 
@@ -82,15 +95,36 @@ const EventsSection = () => {
           <div className="bg-[hsl(var(--card))] rounded-3xl shadow-[var(--shadow-elegant)] overflow-hidden">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Video/Image Area */}
-              <div className="relative h-80 md:h-96 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--muted-foreground))]/10">
-                <img 
-                  src={events[currentEvent].thumbnail}
-                  alt={events[currentEvent].title}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative h-80 md:h-96 bg-gradient-to-br from-[hsl(var(--muted))] to-[hsl(var(--muted-foreground))]/10 overflow-hidden">
+                {showVideo ? (
+                  <video 
+                    src={events[currentEvent].videoUrl}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img 
+                    src={events[currentEvent].thumbnail}
+                    alt={events[currentEvent].title}
+                    className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+                  />
+                )}
+                
+                {/* Video Toggle Button */}
+                <div className="absolute top-4 right-4 z-10">
+                  <button
+                    onClick={() => setShowVideo(!showVideo)}
+                    className="w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+                  >
+                    <Video size={20} />
+                  </button>
+                </div>
                 
                 {/* Play/Pause Overlay */}
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                   <button
                     onClick={togglePlayPause}
                     className="w-16 h-16 bg-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red-dark))] rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 shadow-[var(--shadow-red)]"

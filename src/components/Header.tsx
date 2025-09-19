@@ -61,7 +61,11 @@ const Header = () => {
             <Button 
               variant="outline" 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-[hsl(var(--brand-red))] text-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))] hover:text-white transition-all duration-300"
+              className={`transition-all duration-300 ${
+                isScrolled 
+                  ? "border-[hsl(var(--brand-red))] text-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))] hover:text-white" 
+                  : "border-[hsl(var(--hero-text))]/30 text-[hsl(var(--hero-text))] hover:bg-[hsl(var(--hero-text))] hover:text-[hsl(var(--background))] backdrop-blur-sm bg-white/10"
+              }`}
             >
               Solicitar Orçamento
             </Button>
