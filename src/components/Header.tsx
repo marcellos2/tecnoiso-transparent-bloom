@@ -58,13 +58,7 @@ const Header = () => {
 
           {/* CTA Button & Social Media Icons */}
           <div className="hidden lg:flex items-center space-x-6">
-            <Button 
-              variant="outline" 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-[hsl(var(--hero-text))]/30 text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] hover:border-[hsl(var(--brand-red))] backdrop-blur-sm bg-white/10 transition-all duration-300"
-            >
-              Solicitar Orçamento
-            </Button>
+           
             
             <div className="flex items-center space-x-4 border-l border-[hsl(var(--hero-text))]/20 pl-6">
               <a 
