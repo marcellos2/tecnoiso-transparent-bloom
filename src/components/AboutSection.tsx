@@ -1,5 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, CheckCircle, Target, Users } from "lucide-react";
+import labEquipment1 from "@/assets/lab-equipment-1.jpg";
+import labEquipment2 from "@/assets/lab-equipment-2.jpg";
+import labEquipment3 from "@/assets/lab-equipment-3.jpg";
+import labEquipment4 from "@/assets/lab-equipment-4.jpg";
 
 const AboutSection = () => {
   const features = [
@@ -60,31 +64,43 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
             </div>
           </div>
 
-          {/* Visual Elements */}
+          {/* Visual Elements with Lab Equipment Images */}
           <div className="relative">
             <div className="grid grid-cols-3 gap-4">
-              {/* Circuit pattern inspired visual */}
+              {/* Main lab equipment showcase */}
               <div className="col-span-2 h-64 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-[hsl(var(--brand-red))]/5 rounded-lg relative overflow-hidden">
-                <div className="absolute inset-0 opacity-30">
-                  <svg className="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <circle cx="10" cy="10" r="1" fill="hsl(var(--brand-red))" />
-                        <path d="M10 5 L10 15 M5 10 L15 10" stroke="hsl(var(--brand-red))" strokeWidth="0.5" />
-                      </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#circuit)" />
-                  </svg>
-                </div>
+                <img 
+                  src={labEquipment1}
+                  alt="Equipamentos de laboratório de calibração"
+                  className="w-full h-full object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
               </div>
               
               <div className="h-32 bg-[hsl(var(--brand-red))] rounded-lg relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                <img 
+                  src={labEquipment2}
+                  alt="Laboratório de metrologia"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
               </div>
               
-              <div className="h-32 bg-muted rounded-lg"></div>
+              <div className="h-32 bg-muted rounded-lg overflow-hidden">
+                <img 
+                  src={labEquipment3}
+                  alt="Instrumentos de medição"
+                  className="w-full h-full object-cover opacity-70"
+                />
+              </div>
               
-              <div className="col-span-2 h-32 bg-gradient-to-r from-muted to-[hsl(var(--brand-red))]/10 rounded-lg"></div>
+              <div className="col-span-2 h-32 bg-gradient-to-r from-muted to-[hsl(var(--brand-red))]/10 rounded-lg overflow-hidden">
+                <img 
+                  src={labEquipment4}
+                  alt="Equipamentos de certificação"
+                  className="w-full h-full object-cover opacity-60"
+                />
+              </div>
             </div>
           </div>
         </div>
