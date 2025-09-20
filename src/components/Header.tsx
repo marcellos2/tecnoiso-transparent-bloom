@@ -34,7 +34,6 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <img 
               src={tecnoIsoLogo} 
@@ -43,7 +42,6 @@ const Header = () => {
             />
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-10">
             {menuItems.map((item) => (
               <a
@@ -56,10 +54,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button & Social Media Icons */}
           <div className="hidden lg:flex items-center space-x-6">
-           
-            
             <div className="flex items-center space-x-4 border-l border-[hsl(var(--hero-text))]/20 pl-6">
               <a 
                 href="https://www.instagram.com/tecnoiso/" 
@@ -78,7 +73,7 @@ const Header = () => {
                 <Facebook size={20} />
               </a>
               <a 
-                href="https://www.linkedin.com/company/tecnoso-tecnologia-e-solu%C3%A7%C3%B5es-industriais-ltda/posts/?feedView=all" 
+                href="https://www.linkedin.com/company/tecnoso-tecnologia-e-soluções-industriais-ltda/posts/?feedView=all" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
@@ -88,7 +83,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -99,7 +93,6 @@ const Header = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 bg-[hsl(var(--header-bg))] header-blur rounded-lg">
             <nav className="flex flex-col space-y-4">

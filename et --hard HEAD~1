@@ -1,0 +1,59 @@
+[33mcommit 87c5d9e3fd81c34d33dad4c21329fa69c848eaee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Sat Sep 20 14:27:21 2025 +0000
+
+    Add lab photos and animations
+
+[33mcommit 32e2f1a64dea19df5d6f521e2156098dc4da2c8d[m
+Author: marcellos2 <mclsouza1613ad@gmail.com>
+Date:   Sat Sep 20 11:19:21 2025 -0300
+
+    contatos
+
+[33mcommit 9e3664dc8852c150b7fd3809e9a01f1bcd691ce3[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Fri Sep 19 15:16:43 2025 +0000
+
+    Refatorar botão e remover galeria
+
+[33mcommit 8336fd93cf9477d92572f4f9dc50ab5b7990543f[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Fri Sep 19 15:13:56 2025 +0000
+
+    Add video examples and header functionality
+
+[33mcommit 947f751596aabc2a7765ee61c508509f839a15c8[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Fri Sep 19 15:09:02 2025 +0000
+
+    Add video support and refine design
+
+[33mcommit a6be1258c4e54ff4a2d7cf7d503efeb8e08243a5[m
+Author: marcellos2 <mclsouza1613ad@gmail.com>
+Date:   Tue Sep 16 19:11:58 2025 -0300
+
+    atualização de layout
+
+[33mcommit 0e4aa40d8b13bcf05d78f7bd72383af221106be7[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Mon Sep 15 19:38:53 2025 +0000
+
+    Fix red text borders
+
+[33mcommit f0f5bbf6290b2205caf092b539c4bfcfbf322f8e[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Mon Sep 15 19:30:04 2025 +0000
+
+    Refine site design and add slider
+
+[33mcommit 1a9688518c562f3ce0ed1ee5f5202bbd9adfb81b[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Mon Sep 15 19:23:46 2025 +0000
+
+    Refactor: Improve website design
+
+[33mcommit a445a07fa0a0ee1afded3651a2a8998335aa4460[m
+Author: gpt-engineer-app[bot] <159125892+gpt-engineer-app[bot]@users.noreply.github.com>
+Date:   Mon Sep 15 19:20:51 2025 +0000
+
+    [skip lovable] Use tech stack vite_react_shadcn_ts_20250728_minor

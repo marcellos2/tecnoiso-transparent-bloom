@@ -29,8 +29,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
-      {/* Background decoration */}
+    <section id="contato" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
       <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-red))]/5 to-transparent rounded-full blur-2xl"></div>
       
@@ -49,7 +48,6 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 animate-scale-in">
-          {/* Contact Form */}
           <Card className="border-0 shadow-[var(--shadow-red-soft)] backdrop-blur-sm bg-gradient-to-br from-card to-[hsl(var(--brand-red))]/5 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[hsl(var(--brand-red))]/5 to-transparent opacity-50"></div>
             <CardHeader className="relative z-10">
@@ -114,7 +112,6 @@ const ContactSection = () => {
             </CardContent>
           </Card>
 
-          {/* Contact Information */}
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">
@@ -137,7 +134,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Enhanced Google Maps */}
             <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] relative">
               <div className="absolute top-4 left-4 z-10 bg-[hsl(var(--card))]/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md">
                 <p className="text-sm font-medium text-[hsl(var(--foreground))]">📍 Tecnoiso</p>
@@ -155,7 +151,6 @@ const ContactSection = () => {
               />
             </div>
             
-            {/* Enhanced Link para abrir no Google Maps */}
             <div className="text-center">
               <a
                 href="https://maps.google.com/?q=R.+Dona+Emma,+1541+-+Floresta,+Joinville+-+SC,+89211-493"

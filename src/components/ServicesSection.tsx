@@ -44,7 +44,6 @@ const ServicesSection = () => {
 
   return (
     <section id="servicos" className="py-20 bg-gradient-to-b from-[hsl(var(--brand-gray))] to-background relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-red))]/10 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))]/5 to-transparent rounded-full blur-2xl"></div>
       

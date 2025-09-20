@@ -55,9 +55,15 @@ const HeroSection = () => {
     setCurrentSlide(index);
   };
 
+  const handleServicesClick = () => {
+    const servicesSection = document.getElementById('servicos');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
-      {/* Background Slider */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
@@ -70,7 +76,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
         className="absolute left-6 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 bg-[hsl(var(--brand-white))]/20 backdrop-blur-sm rounded-full flex items-center justify-center text-[hsl(var(--hero-text))] hover:bg-[hsl(var(--brand-red))]/80 transition-all duration-300 hover:scale-110"
@@ -84,7 +89,7 @@ const HeroSection = () => {
       >
         <ChevronRight size={24} />
       </button>
- {/* Hero Content */}
+
       <div className="container mx-auto px-4 py-20 relative z-10 hero-content min-h-screen flex items-center justify-center">
         <div className="max-w-4xl text-center">
           <div key={currentSlide} className="animate-fade-in">
@@ -106,7 +111,7 @@ const HeroSection = () => {
 
             <Button 
               size="lg" 
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={handleServicesClick}
               className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
             >
               CONHEÇA NOSSOS SERVIÇOS
@@ -116,7 +121,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
         {slides.map((_, index) => (
           <button

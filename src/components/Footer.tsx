@@ -5,39 +5,38 @@ const Footer = () => {
     <footer className="bg-[hsl(var(--brand-black))] text-[hsl(var(--brand-white))] py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Company Description */}
           <div className="lg:col-span-1">
-           
-            <p className="text-gray-300 mb- max-w-md ">
+            <p className="text-gray-300 mb-6 max-w-md">
               A Tecnoiso conta com toda estrutura para atender as necessidades dos clientes, com laboratórios próprios e metodologia certificada pelo INMETRO.
-
               Um dos laboratórios é geral e o outro é físico-químico, bem como um laboratório móvel que vai até a sua empresa para realizar serviços de calibração e manutenção.
-
               Tudo com a mesma qualidade e garantia.
             </p>
             <div className="flex space-x-3">
               <a 
-                href="#" 
+                href="https://www.instagram.com/tecnoiso/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[hsl(var(--brand-red))]/80 transition-colors duration-300"
               >
-                <Instagram size={40} />
+                <Instagram size={20} />
               </a>
               <a 
-                href="#" 
-                className="w-10 h-10  rounded-lg flex items-center justify-center hover:bg-[hsl(var(--brand-red))]/80 transition-colors duration-300"
+                href="https://www.facebook.com/tecnoiso/?locale=pt_BR" 
+                className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[hsl(var(--brand-red))]/80 transition-colors duration-300"
               >
-                <Facebook size={40} />
+                <Facebook size={20} />
               </a>
               <a 
-                href="#" 
-                className="w-10 h-10  rounded-lg flex items-center justify-center hover:bg-[hsl(var(--brand-red))]/80 transition-colors duration-300"
+                href="https://www.linkedin.com/company/tecnoso-tecnologia-e-soluções-industriais-ltda/posts/?feedView=all" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[hsl(var(--brand-red))]/80 transition-colors duration-300"
               >
-                <Linkedin size={40} />
+                <Linkedin size={20} />
               </a>
             </div>
           </div>
 
-          {/* Services */}
           <div>
             <h3 className="text-lg font-bold mb-6">Serviços</h3>
             <ul className="space-y-3">
@@ -69,7 +68,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="text-lg font-bold mb-6">Contato</h3>
             <div className="space-y-4">
@@ -96,7 +94,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
             © 2024 TECNOISO TECNOLOGIA E SOLUÇÕES INDUSTRIAIS LTDA.
