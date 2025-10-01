@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, CheckCircle, Target, Users } from "lucide-react";
 import labEquipment1 from "@/assets/lab-equipment-1.jpg";
@@ -6,6 +7,24 @@ import labEquipment3 from "@/assets/lab-equipment-3.jpg";
 import labEquipment4 from "@/assets/lab-equipment-4.jpg";
 
 const AboutSection = () => {
+  const [imagePositions, setImagePositions] = useState([0, 1, 2, 3]);
+  const labImages = [labEquipment1, labEquipment2, labEquipment3, labEquipment4];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImagePositions(prev => {
+        const newPositions = [...prev];
+        // Rotate positions to create alternating effect
+        const last = newPositions.pop();
+        if (last !== undefined) {
+          newPositions.unshift(last);
+        }
+        return newPositions;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
   const features = [
     {
       icon: Award,
@@ -70,35 +89,42 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
               {/* Main lab equipment showcase */}
               <div className="col-span-2 h-64 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-[hsl(var(--brand-red))]/5 rounded-lg relative overflow-hidden">
                 <img 
-                  src={labEquipment1}
+                  key={`main-${imagePositions[0]}`}
+                  src={labImages[imagePositions[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="w-full h-full object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-full object-cover rounded-lg opacity-0 hover:opacity-100 transition-all duration-1000 animate-fade-in"
+                  style={{ opacity: 0.8 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
               </div>
               
               <div className="h-32 bg-[hsl(var(--brand-red))] rounded-lg relative overflow-hidden">
                 <img 
-                  src={labEquipment2}
+                  key={`small-1-${imagePositions[1]}`}
+                  src={labImages[imagePositions[1]]}
                   alt="Laboratório de metrologia"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-all duration-1000 animate-fade-in"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
               </div>
               
               <div className="h-32 bg-muted rounded-lg overflow-hidden">
                 <img 
-                  src={labEquipment3}
+                  key={`small-2-${imagePositions[2]}`}
+                  src={labImages[imagePositions[2]]}
                   alt="Instrumentos de medição"
-                  className="w-full h-full object-cover opacity-70"
+                  className="w-full h-full object-cover opacity-0 transition-all duration-1000 animate-fade-in"
+                  style={{ opacity: 0.7 }}
                 />
               </div>
               
               <div className="col-span-2 h-32 bg-gradient-to-r from-muted to-[hsl(var(--brand-red))]/10 rounded-lg overflow-hidden">
                 <img 
-                  src={labEquipment4}
+                  key={`bottom-${imagePositions[3]}`}
+                  src={labImages[imagePositions[3]]}
                   alt="Equipamentos de certificação"
-                  className="w-full h-full object-cover opacity-60"
+                  className="w-full h-full object-cover opacity-0 transition-all duration-1000 animate-fade-in"
+                  style={{ opacity: 0.6 }}
                 />
               </div>
             </div>

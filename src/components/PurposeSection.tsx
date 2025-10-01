@@ -1,3 +1,5 @@
+import brazilMap from "@/assets/brazil-map.png";
+
 const PurposeSection = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-[hsl(var(--background))] via-[hsl(var(--muted))] to-[hsl(var(--background))] relative overflow-hidden">
@@ -72,36 +74,23 @@ const PurposeSection = () => {
 
           <div className="order-1 lg:order-2 relative">
             <div className="relative">
-              <div className="relative w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-[hsl(var(--card))] to-[hsl(var(--muted))] shadow-[var(--shadow-elegant)]">
+              <div className="relative w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-[hsl(var(--primary))]/5 to-[hsl(var(--background))] shadow-[var(--shadow-elegant)] p-8 flex flex-col items-center justify-center">
                 
-                <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-[hsl(var(--primary))]/10 to-[hsl(var(--brand-red))]/5 rounded-t-3xl">
-                  <div className="absolute top-4 left-4 w-16 h-16 bg-[hsl(var(--brand-red))]/20 rounded-2xl"></div>
-                  <div className="absolute top-6 right-6 w-12 h-12 border-2 border-[hsl(var(--primary))]/30 rounded-xl"></div>
-                  <div className="absolute bottom-4 left-1/3 w-20 h-20 bg-gradient-to-br from-[hsl(var(--card))] to-[hsl(var(--muted))] rounded-full shadow-lg"></div>
+                <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--primary))] mb-4 text-center">
+                  Atuamos em todo o território nacional
+                </h3>
+                
+                <div className="relative w-full max-w-md flex items-center justify-center">
+                  <img 
+                    src={brazilMap}
+                    alt="Mapa do Brasil - Atuação Nacional da Tecnoiso"
+                    className="w-full h-auto object-contain animate-fade-in drop-shadow-lg"
+                  />
                 </div>
-
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-tr from-[hsl(var(--muted))] to-[hsl(var(--card))] rounded-b-3xl">
-                  <div className="absolute inset-4 opacity-30">
-                    <div className="grid grid-cols-8 gap-1 h-full">
-                      {Array.from({ length: 32 }).map((_, i) => (
-                        <div 
-                          key={i} 
-                          className={`rounded-sm ${
-                            i % 3 === 0 
-                              ? 'bg-[hsl(var(--brand-red))]/40' 
-                              : i % 5 === 0 
-                                ? 'bg-[hsl(var(--primary))]/40' 
-                                : 'bg-[hsl(var(--muted-foreground))]/20'
-                          }`}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] rounded-3xl shadow-[var(--shadow-red)] flex items-center justify-center animate-scale-in">
-                  <div className="w-8 h-8 bg-white rounded-lg opacity-90"></div>
-                </div>
+                
+                <p className="text-sm md:text-base text-[hsl(var(--muted-foreground))] text-center mt-4 max-w-md">
+                  Cobertura completa em todos os estados brasileiros, levando qualidade e precisão onde você precisar.
+                </p>
               </div>
 
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] rounded-2xl shadow-[var(--shadow-red)] transform rotate-12 animate-fade-in"></div>
