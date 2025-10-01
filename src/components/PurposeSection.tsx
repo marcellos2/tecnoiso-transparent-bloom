@@ -1,4 +1,4 @@
-import brazilMap from "@/assets/brazil-map.png";
+import brazilMap from "@/assets/brazil-map-3d.png";
 
 const PurposeSection = () => {
   return (

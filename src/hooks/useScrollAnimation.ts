@@ -46,7 +46,7 @@ export const useScrollReveal = () => {
             
             setTimeout(() => {
               element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
+              element.style.transform = 'scale(1)';
             }, parseInt(delay));
             
             observer.unobserve(element);
@@ -62,8 +62,8 @@ export const useScrollReveal = () => {
     elements.forEach((element) => {
       const htmlElement = element as HTMLElement;
       htmlElement.style.opacity = '0';
-      htmlElement.style.transform = 'translateY(30px)';
-      htmlElement.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      htmlElement.style.transform = 'scale(0.9)';
+      htmlElement.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
       observer.observe(element);
     });
 
