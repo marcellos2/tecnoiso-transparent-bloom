@@ -1,3 +1,4 @@
+import { Users, Building2, MapPin } from "lucide-react";
 import brazilMap from "@/assets/brazil-map-3d.png";
 
 const PurposeSection = () => {
@@ -73,24 +74,63 @@ const PurposeSection = () => {
           </div>
 
           <div className="order-1 lg:order-2 relative">
-            <div className="relative">
-              <div className="relative w-full h-96 rounded-3xl overflow-hidden bg-gradient-to-br from-[hsl(var(--primary))]/5 to-[hsl(var(--background))] shadow-[var(--shadow-elegant)] p-8 flex flex-col items-center justify-center">
-                
-                <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--primary))] mb-4 text-center">
-                  Atuamos em todo o território nacional
-                </h3>
-                
-                <div className="relative w-full max-w-md flex items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[hsl(var(--background))] to-[hsl(var(--muted))] rounded-3xl p-8 shadow-[var(--shadow-elegant)]">
+              
+              <h3 className="text-3xl md:text-4xl font-bold text-center mb-12">
+                <span className="text-[hsl(var(--foreground))]">Atendendo com </span>
+                <span className="text-[hsl(var(--brand-red))]">Excelência</span>
+              </h3>
+
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                {/* Mapa do Brasil */}
+                <div className="flex-shrink-0 w-full lg:w-1/2 flex justify-center">
                   <img 
                     src={brazilMap}
                     alt="Mapa do Brasil - Atuação Nacional da Tecnoiso"
-                    className="w-full h-auto object-contain animate-fade-in drop-shadow-lg"
+                    className="w-full max-w-xs h-auto object-contain animate-fade-in drop-shadow-2xl"
                   />
                 </div>
-                
-                <p className="text-sm md:text-base text-[hsl(var(--muted-foreground))] text-center mt-4 max-w-md">
-                  Cobertura completa em todos os estados brasileiros, levando qualidade e precisão onde você precisar.
-                </p>
+
+                {/* Estatísticas */}
+                <div className="flex-1 space-y-8">
+                  <div className="text-center lg:text-left">
+                    <p className="text-xl md:text-2xl font-bold text-[hsl(var(--foreground))] mb-4">
+                      Atendendo com Excelência<br />em cada parte do nosso país!
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4 p-4 bg-[hsl(var(--card))] rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] rounded-full flex items-center justify-center">
+                        <Users className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-3xl font-bold text-[hsl(var(--brand-red))]">3,654</p>
+                        <p className="text-sm text-[hsl(var(--muted-foreground))] uppercase tracking-wide">Clientes Atendidos</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 p-4 bg-[hsl(var(--card))] rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary))]/80 rounded-full flex items-center justify-center">
+                        <Building2 className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-3xl font-bold text-[hsl(var(--primary))]">379</p>
+                        <p className="text-sm text-[hsl(var(--muted-foreground))] uppercase tracking-wide">Cidades</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 p-4 bg-[hsl(var(--card))] rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                      <div className="w-14 h-14 bg-gradient-to-br from-[hsl(var(--brand-red-dark))] to-[hsl(var(--brand-red))] rounded-full flex items-center justify-center">
+                        <MapPin className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-3xl font-bold text-[hsl(var(--brand-red-dark))]">24</p>
+                        <p className="text-sm text-[hsl(var(--muted-foreground))] uppercase tracking-wide">Estados</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] rounded-2xl shadow-[var(--shadow-red)] transform rotate-12 animate-fade-in"></div>

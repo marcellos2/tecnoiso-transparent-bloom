@@ -21,7 +21,7 @@ const AboutSection = () => {
         }
         return newPositions;
       });
-    }, 3000);
+    }, 5000); // Aumentei para 5 segundos
 
     return () => clearInterval(interval);
   }, []);
@@ -92,7 +92,7 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`main-${imagePositions[0]}`}
                   src={labImages[imagePositions[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="w-full h-full object-cover rounded-lg opacity-0 hover:opacity-100 transition-all duration-1000 animate-fade-in"
+                  className="w-full h-full object-cover rounded-lg transition-opacity duration-1000 ease-in-out"
                   style={{ opacity: 0.8 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
@@ -103,7 +103,7 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`small-1-${imagePositions[1]}`}
                   src={labImages[imagePositions[1]]}
                   alt="Laboratório de metrologia"
-                  className="w-full h-full object-cover transition-all duration-1000 animate-fade-in"
+                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
               </div>
@@ -113,7 +113,7 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`small-2-${imagePositions[2]}`}
                   src={labImages[imagePositions[2]]}
                   alt="Instrumentos de medição"
-                  className="w-full h-full object-cover opacity-0 transition-all duration-1000 animate-fade-in"
+                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
                   style={{ opacity: 0.7 }}
                 />
               </div>
@@ -123,7 +123,7 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`bottom-${imagePositions[3]}`}
                   src={labImages[imagePositions[3]]}
                   alt="Equipamentos de certificação"
-                  className="w-full h-full object-cover opacity-0 transition-all duration-1000 animate-fade-in"
+                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
                   style={{ opacity: 0.6 }}
                 />
               </div>
