@@ -1,9 +1,7 @@
 import { Users, Building2, MapPin } from "lucide-react";
 import brazilMap from "@/assets/brazil-map-3d.png";
-
 const PurposeSection = () => {
-  return (
-    <section className="py-20 bg-gradient-to-br from-[hsl(var(--background))] via-[hsl(var(--muted))] to-[hsl(var(--background))] relative overflow-hidden">
+  return <section className="py-20 bg-gradient-to-br from-[hsl(var(--background))] via-[hsl(var(--muted))] to-[hsl(var(--background))] relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[hsl(var(--brand-red))]/10 via-[hsl(var(--primary))]/5 to-transparent rounded-bl-[12rem] transform rotate-12"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[hsl(var(--brand-red))]/8 to-[hsl(var(--primary))]/3 rounded-tr-[10rem] transform -rotate-12"></div>
@@ -84,19 +82,13 @@ const PurposeSection = () => {
               <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                 {/* Mapa do Brasil */}
                 <div className="flex-shrink-0 w-full lg:w-1/2 flex justify-center">
-                  <img 
-                    src={brazilMap}
-                    alt="Mapa do Brasil - Atuação Nacional da Tecnoiso"
-                    className="w-full max-w-xs h-auto object-contain animate-fade-in drop-shadow-2xl"
-                  />
+                  <img src={brazilMap} alt="Mapa do Brasil - Atuação Nacional da Tecnoiso" className="w-full max-w-xs h-auto object-contain animate-fade-in drop-shadow-2xl" />
                 </div>
 
                 {/* Estatísticas */}
                 <div className="flex-1 space-y-8">
                   <div className="text-center lg:text-left">
-                    <p className="text-xl md:text-2xl font-bold text-[hsl(var(--foreground))] mb-4">
-                      Atendendo com Excelência<br />em cada parte do nosso país!
-                    </p>
+                    
                   </div>
 
                   <div className="space-y-6">
@@ -139,8 +131,6 @@ const PurposeSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default PurposeSection;
