@@ -7,27 +7,27 @@ import labEquipment3 from "@/assets/lab-equipment-3.jpg";
 import labEquipment4 from "@/assets/lab-equipment-4.jpg";
 
 const AboutSection = () => {
-  const [imagePositions, setImagePositions] = useState([0, 1, 2, 3]);
-  const [fadingOut, setFadingOut] = useState(false);
+  const [currentImages, setCurrentImages] = useState([0, 1, 2, 3]);
+  const [nextImages, setNextImages] = useState([0, 1, 2, 3]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const labImages = [labEquipment1, labEquipment2, labEquipment3, labEquipment4];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Start fade out
-      setFadingOut(true);
+      // Prepare next images
+      const shuffled = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
+      setNextImages(shuffled);
       
-      // After fade out completes, change images and fade in
+      // Start transition
+      setIsTransitioning(true);
+      
+      // Complete transition
       setTimeout(() => {
-        setImagePositions(prev => {
-          const newPositions = [...prev];
-          // Shuffle randomly for more natural effect
-          const shuffled = newPositions.sort(() => Math.random() - 0.5);
-          return shuffled;
-        });
-        setFadingOut(false);
-      }, 600); // Wait for fade out animation
+        setCurrentImages(shuffled);
+        setIsTransitioning(false);
+      }, 1200);
       
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
@@ -95,43 +95,63 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
               {/* Main lab equipment showcase */}
               <div className="col-span-2 h-64 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-[hsl(var(--brand-red))]/5 rounded-lg relative overflow-hidden">
                 <img 
-                  key={`main-${imagePositions[0]}`}
-                  src={labImages[imagePositions[0]]}
+                  src={labImages[currentImages[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="w-full h-full object-cover rounded-lg transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fadingOut ? 0 : 0.9 }}
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0 : 0.9 }}
+                />
+                <img 
+                  src={labImages[nextImages[0]]}
+                  alt="Equipamentos de laboratório de calibração"
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0.9 : 0 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
               </div>
               
               <div className="h-32 bg-[hsl(var(--brand-red))] rounded-lg relative overflow-hidden">
                 <img 
-                  key={`small-1-${imagePositions[1]}`}
-                  src={labImages[imagePositions[1]]}
+                  src={labImages[currentImages[1]]}
                   alt="Laboratório de metrologia"
-                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fadingOut ? 0 : 1 }}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0 : 1 }}
+                />
+                <img 
+                  src={labImages[nextImages[1]]}
+                  alt="Laboratório de metrologia"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 1 : 0 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
               </div>
               
-              <div className="h-32 bg-muted rounded-lg overflow-hidden">
+              <div className="h-32 bg-muted rounded-lg relative overflow-hidden">
                 <img 
-                  key={`small-2-${imagePositions[2]}`}
-                  src={labImages[imagePositions[2]]}
+                  src={labImages[currentImages[2]]}
                   alt="Instrumentos de medição"
-                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fadingOut ? 0 : 0.85 }}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0 : 0.85 }}
+                />
+                <img 
+                  src={labImages[nextImages[2]]}
+                  alt="Instrumentos de medição"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0.85 : 0 }}
                 />
               </div>
               
-              <div className="col-span-2 h-32 bg-gradient-to-r from-muted to-[hsl(var(--brand-red))]/10 rounded-lg overflow-hidden">
+              <div className="col-span-2 h-32 bg-gradient-to-r from-muted to-[hsl(var(--brand-red))]/10 rounded-lg relative overflow-hidden">
                 <img 
-                  key={`bottom-${imagePositions[3]}`}
-                  src={labImages[imagePositions[3]]}
+                  src={labImages[currentImages[3]]}
                   alt="Equipamentos de certificação"
-                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-                  style={{ opacity: fadingOut ? 0 : 0.75 }}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0 : 0.75 }}
+                />
+                <img 
+                  src={labImages[nextImages[3]]}
+                  alt="Equipamentos de certificação"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1200 ease-in-out"
+                  style={{ opacity: isTransitioning ? 0.75 : 0 }}
                 />
               </div>
             </div>
