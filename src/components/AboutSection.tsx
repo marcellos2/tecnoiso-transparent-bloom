@@ -8,20 +8,26 @@ import labEquipment4 from "@/assets/lab-equipment-4.jpg";
 
 const AboutSection = () => {
   const [imagePositions, setImagePositions] = useState([0, 1, 2, 3]);
+  const [fadingOut, setFadingOut] = useState(false);
   const labImages = [labEquipment1, labEquipment2, labEquipment3, labEquipment4];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setImagePositions(prev => {
-        const newPositions = [...prev];
-        // Rotate positions to create alternating effect
-        const last = newPositions.pop();
-        if (last !== undefined) {
-          newPositions.unshift(last);
-        }
-        return newPositions;
-      });
-    }, 5000); // Aumentei para 5 segundos
+      // Start fade out
+      setFadingOut(true);
+      
+      // After fade out completes, change images and fade in
+      setTimeout(() => {
+        setImagePositions(prev => {
+          const newPositions = [...prev];
+          // Shuffle randomly for more natural effect
+          const shuffled = newPositions.sort(() => Math.random() - 0.5);
+          return shuffled;
+        });
+        setFadingOut(false);
+      }, 600); // Wait for fade out animation
+      
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -92,8 +98,8 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`main-${imagePositions[0]}`}
                   src={labImages[imagePositions[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="w-full h-full object-cover rounded-lg transition-opacity duration-1000 ease-in-out"
-                  style={{ opacity: 0.8 }}
+                  className="w-full h-full object-cover rounded-lg transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: fadingOut ? 0 : 0.9 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
               </div>
@@ -103,7 +109,8 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`small-1-${imagePositions[1]}`}
                   src={labImages[imagePositions[1]]}
                   alt="Laboratório de metrologia"
-                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: fadingOut ? 0 : 1 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
               </div>
@@ -113,8 +120,8 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`small-2-${imagePositions[2]}`}
                   src={labImages[imagePositions[2]]}
                   alt="Instrumentos de medição"
-                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-                  style={{ opacity: 0.7 }}
+                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: fadingOut ? 0 : 0.85 }}
                 />
               </div>
               
@@ -123,8 +130,8 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                   key={`bottom-${imagePositions[3]}`}
                   src={labImages[imagePositions[3]]}
                   alt="Equipamentos de certificação"
-                  className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-                  style={{ opacity: 0.6 }}
+                  className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
+                  style={{ opacity: fadingOut ? 0 : 0.75 }}
                 />
               </div>
             </div>
