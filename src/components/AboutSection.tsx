@@ -25,9 +25,9 @@ const AboutSection = () => {
       setTimeout(() => {
         setCurrentImages(shuffled);
         setIsTransitioning(false);
-      }, 2000);
+      }, 3500);
       
-    }, 8000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -97,13 +97,13 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                 <img 
                   src={labImages[currentImages[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0 : 0.9 }}
                 />
                 <img 
                   src={labImages[nextImages[0]]}
                   alt="Equipamentos de laboratório de calibração"
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0.9 : 0 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-red))]/30 to-transparent"></div>
@@ -113,13 +113,13 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                 <img 
                   src={labImages[currentImages[1]]}
                   alt="Laboratório de metrologia"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0 : 1 }}
                 />
                 <img 
                   src={labImages[nextImages[1]]}
                   alt="Laboratório de metrologia"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 1 : 0 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-red))]/40 to-transparent"></div>
@@ -129,13 +129,13 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                 <img 
                   src={labImages[currentImages[2]]}
                   alt="Instrumentos de medição"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0 : 0.85 }}
                 />
                 <img 
                   src={labImages[nextImages[2]]}
                   alt="Instrumentos de medição"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0.85 : 0 }}
                 />
               </div>
@@ -144,13 +144,13 @@ Presença nacional e atendimento individualizado é o que torna a Tecnoiso únic
                 <img 
                   src={labImages[currentImages[3]]}
                   alt="Equipamentos de certificação"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0 : 0.75 }}
                 />
                 <img 
                   src={labImages[nextImages[3]]}
                   alt="Equipamentos de certificação"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ease-in-out"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[3500ms] ease-in-out"
                   style={{ opacity: isTransitioning ? 0.75 : 0 }}
                 />
               </div>
