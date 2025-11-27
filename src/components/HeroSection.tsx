@@ -63,7 +63,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden">
+    <section id="home" className="h-[750px] relative overflow-hidden">
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
@@ -90,10 +90,10 @@ const HeroSection = () => {
         <ChevronRight size={24} />
       </button>
 
-      <div className="container mx-auto px-4 py-20 relative z-10 hero-content min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl text-center">
+      <div className="container mx-auto px-4 py-20 relative z-10 hero-content h-[750px] flex items-center justify-start">
+        <div className="max-w-2xl text-left">
           <div key={currentSlide} className="animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--hero-text))] mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[hsl(var(--hero-text))] mb-6 leading-tight">
               {slides[currentSlide].title}
               <br />
               {slides[currentSlide].subtitle}
@@ -105,17 +105,17 @@ const HeroSection = () => {
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-[hsl(var(--hero-text))] mb-8 max-w-3xl mx-auto opacity-90 animate-slide-up">
+            <p className="hidden text-xl md:text-2xl text-[hsl(var(--hero-text))] mb-8 max-w-3xl opacity-90 animate-slide-up">
               {slides[currentSlide].description}
             </p>
 
             <Button 
               size="lg" 
               onClick={handleServicesClick}
-              className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
+              className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-8 py-5 text-base font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in rounded-full"
             >
-              CONHEÇA NOSSOS SERVIÇOS
-              <ChevronRight className="ml-2" size={20} />
+              FALE CONOSCO
+              <ChevronRight className="ml-2" size={18} />
             </Button>
           </div>
         </div>
