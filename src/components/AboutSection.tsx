@@ -14,39 +14,39 @@ const AboutSection = () => {
   
   // Diferentes layouts de grid
   const layouts = [
-    // Layout 1: Original
+    // Layout 1: Original com altura aumentada
     [
-      { col: "col-span-2", row: "h-64" },
-      { col: "col-span-1", row: "h-64" },
-      { col: "col-span-1", row: "h-32" },
-      { col: "col-span-2", row: "h-32" }
-    ],
-    // Layout 2: Invertido
-    [
-      { col: "col-span-1", row: "h-64" },
-      { col: "col-span-2", row: "h-64" },
-      { col: "col-span-2", row: "h-32" },
-      { col: "col-span-1", row: "h-32" }
-    ],
-    // Layout 3: Vertical destaque
-    [
-      { col: "col-span-1", row: "h-48" },
-      { col: "col-span-2 row-span-2", row: "h-full" },
-      { col: "col-span-1", row: "h-48" }
-    ],
-    // Layout 4: Mosaico
-    [
-      { col: "col-span-2", row: "h-48" },
-      { col: "col-span-1", row: "h-48" },
-      { col: "col-span-1", row: "h-48" },
-      { col: "col-span-2", row: "h-48" }
-    ],
-    // Layout 5: Assimétrico
-    [
+      { col: "col-span-2", row: "h-72" },
+      { col: "col-span-1", row: "h-72" },
       { col: "col-span-1", row: "h-40" },
-      { col: "col-span-2", row: "h-56" },
+      { col: "col-span-2", row: "h-40" }
+    ],
+    // Layout 2: Invertido com altura aumentada
+    [
+      { col: "col-span-1", row: "h-72" },
+      { col: "col-span-2", row: "h-72" },
       { col: "col-span-2", row: "h-40" },
+      { col: "col-span-1", row: "h-40" }
+    ],
+    // Layout 3: Vertical destaque com altura aumentada
+    [
+      { col: "col-span-1", row: "h-56" },
+      { col: "col-span-2 row-span-2", row: "h-full" },
       { col: "col-span-1", row: "h-56" }
+    ],
+    // Layout 4: Mosaico com altura aumentada
+    [
+      { col: "col-span-2", row: "h-56" },
+      { col: "col-span-1", row: "h-56" },
+      { col: "col-span-1", row: "h-56" },
+      { col: "col-span-2", row: "h-56" }
+    ],
+    // Layout 5: Assimétrico com altura aumentada
+    [
+      { col: "col-span-1", row: "h-48" },
+      { col: "col-span-2", row: "h-64" },
+      { col: "col-span-2", row: "h-48" },
+      { col: "col-span-1", row: "h-64" }
     ]
   ];
 
@@ -136,7 +136,17 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="sobre" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))]">
+    <section id="sobre" className="py-20 relative overflow-hidden">
+      {/* Background com fumaça vermelha nítida cobrindo toda a seção */}
+      <div className="absolute inset-0 bg-white"></div>
+      <div 
+        className="absolute inset-0 opacity-7 bg-no-repeat"
+        style={{
+       
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-white/ via-white/50 to-transparent"></div>
+      
       <style>{`
         @keyframes fadeInZoom {
           from {
@@ -243,19 +253,19 @@ const AboutSection = () => {
         }
       `}</style>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-transparent rounded-full blur-xl"></div>
+            <div className="relative text-center lg:text-left">
+              <div className="absolute -top-4 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-24 h-24 bg-gradient-to-br from-[hsl(var(--brand-red))]/20 to-transparent rounded-full blur-xl"></div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in">
                 Somos sua melhor escolha em 
                 <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text"> calibração, certificação e serviços metrológicos.</span>
               </h2>
             </div>
             
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed animate-slide-up">
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed animate-slide-up text-center lg:text-left">
               A Tecnoiso é referência no mercado nacional nos segmentos de calibração, manutenção, automação industrial e gerenciamento metrológico desde 2001.
               <br /><br />
               Foco na modernidade, inovação, agilidade e atualização constante.
