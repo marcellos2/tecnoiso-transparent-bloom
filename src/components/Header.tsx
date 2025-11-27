@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import tecnoIsoLogo from "@/assets/tecnoiso-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +20,12 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { label: "HOME", href: "#home" },
-    { label: "QUEM SOMOS", href: "#sobre" },
-    { label: "SERVIÇOS", href: "#servicos" },
-    { label: "CERTIFICAÇÕES", href: "#certificacoes" },
-    { label: "CONTATO", href: "#contato" },
+    { label: "HOME", href: "#home", type: "anchor" },
+    { label: "QUEM SOMOS", href: "#sobre", type: "anchor" },
+    { label: "SERVIÇOS", href: "#servicos", type: "anchor" },
+    { label: "CERTIFICAÇÕES", href: "#certificacoes", type: "anchor" },
+    { label: "BLOG", href: "/blog", type: "route" },
+    { label: "CONTATO", href: "#contato", type: "anchor" },
   ];
 
   return (
@@ -34,23 +38,49 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img 
               src={tecnoIsoLogo} 
               alt="Tecnoiso Logo" 
               className="h-12 w-auto"
             />
-          </div>
+          </Link>
 
           <nav className="hidden lg:flex items-center space-x-10">
             {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] font-medium transition-colors duration-300"
-              >
-                {item.label}
-              </a>
+              item.type === "route" ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={`${
+                    isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                  } hover:text-[hsl(var(--brand-red))] font-medium transition-colors duration-300`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                isHomePage ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={`${
+                      isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                    } hover:text-[hsl(var(--brand-red))] font-medium transition-colors duration-300`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={`/${item.href}`}
+                    className={`${
+                      isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                    } hover:text-[hsl(var(--brand-red))] font-medium transition-colors duration-300`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )
             ))}
           </nav>
 
@@ -60,7 +90,9 @@ const Header = () => {
                 href="https://www.instagram.com/tecnoiso/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+                className={`${
+                  isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                } hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110`}
               >
                 <Instagram size={20} />
               </a>
@@ -68,7 +100,9 @@ const Header = () => {
                 href="#" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+                className={`${
+                  isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                } hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110`}
               >
                 <Facebook size={20} />
               </a>
@@ -76,7 +110,9 @@ const Header = () => {
                 href="https://www.linkedin.com/company/tecnoso-tecnologia-e-soluções-industriais-ltda/posts/?feedView=all" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110"
+                className={`${
+                  isScrolled ? 'text-[hsl(var(--header-text))]' : 'text-[hsl(var(--hero-text))]'
+                } hover:text-[hsl(var(--brand-red))] transition-colors duration-300 hover:scale-110`}
               >
                 <Linkedin size={20} />
               </a>
@@ -93,22 +129,42 @@ const Header = () => {
           </Button>
         </div>
 
-        {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 bg-[hsl(var(--header-bg))] header-blur rounded-lg">
             <nav className="flex flex-col space-y-4">
               {menuItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-[hsl(var(--header-text))] hover:text-[hsl(var(--brand-red))] font-medium px-4 transition-colors duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
+                item.type === "route" ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="text-[hsl(var(--header-text))] hover:text-[hsl(var(--brand-red))] font-medium px-4 transition-colors duration-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  isHomePage ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-[hsl(var(--header-text))] hover:text-[hsl(var(--brand-red))] font-medium px-4 transition-colors duration-300"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      to={`/${item.href}`}
+                      className="text-[hsl(var(--header-text))] hover:text-[hsl(var(--brand-red))] font-medium px-4 transition-colors duration-300"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )
               ))}
             </nav>
           </div>
-        )}
       </div>
     </header>
   );
