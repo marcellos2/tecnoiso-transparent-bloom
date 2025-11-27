@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import { Link } from "react-router-dom";
 import slide1 from "@/assets/slide1-precision.jpg";
 import slide2 from "@/assets/slide2-calibration.jpg";
 import slide3 from "@/assets/slide3-certification.jpg";
@@ -16,10 +15,7 @@ const HeroSection = () => {
       subtitle: "confiabilidade e",
       highlight: "excelência em",
       accent: "metrologia.",
-      description: "Soluções completas em calibração, certificação e serviços metrológicos para garantir a qualidade e conformidade dos seus equipamentos.",
-      showButton: true,
-      buttonText: "CONHEÇA NOSSOS SERVIÇOS",
-      buttonAction: "services"
+      description: "Soluções completas em calibração, certificação e serviços metrológicos para garantir a qualidade e conformidade dos seus equipamentos."
     },
     {
       image: slide2,
@@ -27,22 +23,15 @@ const HeroSection = () => {
       subtitle: "de alta precisão",
       highlight: "com certificação",
       accent: "INMETRO.",
-      description: "Laboratório acreditado oferecendo serviços de calibração com rastreabilidade garantida e certificados reconhecidos nacionalmente.",
-      showButton: true,
-      buttonText: "CONHEÇA NOSSOS SERVIÇOS",
-      buttonAction: "services"
+      description: "Laboratório acreditado oferecendo serviços de calibração com rastreabilidade garantida e certificados reconhecidos nacionalmente."
     },
     {
       image: slide3,
-      tag: "Novo post no blog!",
-      title: "Transformação",
-      subtitle: "digital da",
-      highlight: "indústria",
-      accent: "",
-      description: "Descubra como a tecnologia está revolucionando a metrologia e a indústria brasileira.",
-      showButton: true,
-      buttonText: "ACESSE",
-      buttonAction: "blog"
+      title: "Certificação",
+      subtitle: "e consultoria",
+      highlight: "em sistemas de",
+      accent: "qualidade.",
+      description: "Assessoria especializada para implementação de normas ISO e sistemas de gestão da qualidade para sua empresa."
     }
   ];
 
@@ -104,54 +93,30 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 py-20 relative z-10 hero-content min-h-screen flex items-center justify-center">
         <div className="max-w-4xl text-center">
           <div key={currentSlide} className="animate-fade-in">
-            {slides[currentSlide].tag && (
-              <span className="inline-block px-4 py-2 mb-4 text-sm font-semibold text-[hsl(var(--brand-red))] bg-[hsl(var(--brand-white))]/90 rounded-full animate-fade-in">
-                {slides[currentSlide].tag}
-              </span>
-            )}
-            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--hero-text))] mb-6 leading-tight">
               {slides[currentSlide].title}
               <br />
               {slides[currentSlide].subtitle}
               <br />
               {slides[currentSlide].highlight}
-              {slides[currentSlide].accent && (
-                <>
-                  <br />
-                  <span className="text-[hsl(var(--brand-red))] font-bold">
-                    {slides[currentSlide].accent}
-                  </span>
-                </>
-              )}
+              <br />
+              <span className="text-[hsl(var(--brand-red))] font-bold">
+                {slides[currentSlide].accent}
+              </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-[hsl(var(--hero-text))] mb-8 max-w-3xl mx-auto opacity-90 animate-slide-up">
               {slides[currentSlide].description}
             </p>
 
-            {slides[currentSlide].showButton && (
-              slides[currentSlide].buttonAction === "blog" ? (
-                <Link to="/blog">
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
-                  >
-                    {slides[currentSlide].buttonText}
-                    <ChevronRight className="ml-2" size={20} />
-                  </Button>
-                </Link>
-              ) : (
-                <Button 
-                  size="lg" 
-                  onClick={handleServicesClick}
-                  className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
-                >
-                  {slides[currentSlide].buttonText}
-                  <ChevronRight className="ml-2" size={20} />
-                </Button>
-              )
-            )}
+            <Button 
+              size="lg" 
+              onClick={handleServicesClick}
+              className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-10 py-6 text-lg font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in"
+            >
+              CONHEÇA NOSSOS SERVIÇOS
+              <ChevronRight className="ml-2" size={20} />
+            </Button>
           </div>
         </div>
       </div>
