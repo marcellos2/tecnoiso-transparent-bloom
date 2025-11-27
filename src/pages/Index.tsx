@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import PurposeSection from "@/components/PurposeSection";
 import ServicesSection from "@/components/ServicesSection";
-import EventsSection from "@/components/EventsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollAnimation";
@@ -25,7 +25,7 @@ const Index = () => {
         <ServicesSection />
       </div>
       <div data-scroll-reveal data-scroll-delay="200">
-        <EventsSection />
+        <TestimonialsSection />
       </div>
       <div data-scroll-reveal data-scroll-delay="200">
         <ContactSection />
