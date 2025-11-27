@@ -55,8 +55,41 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="sobre" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))]">
-      <div className="container mx-auto px-4">
+    <section id="sobre" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
+      {/* Circuit board decorative elements */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        {/* Horizontal lines */}
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          {/* Top left circuit pattern */}
+          <path d="M50,100 L150,100 L150,150 M150,100 L200,100" stroke="hsl(var(--brand-red))" strokeWidth="3" fill="none" />
+          <circle cx="150" cy="100" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="50" cy="100" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="150" cy="150" r="8" fill="hsl(var(--brand-red))" />
+          
+          {/* Top right circuit pattern */}
+          <path d="M1200,120 L1300,120 L1300,180 L1400,180" stroke="hsl(var(--brand-red))" strokeWidth="3" fill="none" />
+          <circle cx="1200" cy="120" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1300" cy="120" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1300" cy="180" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1400" cy="180" r="8" fill="hsl(var(--brand-red))" />
+          
+          {/* Bottom right circuit pattern */}
+          <path d="M1150,500 L1250,500 M1250,500 L1250,550 L1350,550" stroke="hsl(var(--brand-red))" strokeWidth="3" fill="none" />
+          <circle cx="1150" cy="500" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1250" cy="500" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1250" cy="550" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="1350" cy="550" r="8" fill="hsl(var(--brand-red))" />
+          
+          {/* Bottom left circuit pattern */}
+          <path d="M100,520 L150,520 L150,580 M100,520 L100,580 L150,580" stroke="hsl(var(--brand-red))" strokeWidth="3" fill="none" />
+          <circle cx="100" cy="520" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="150" cy="520" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="100" cy="580" r="8" fill="hsl(var(--brand-red))" />
+          <circle cx="150" cy="580" r="8" fill="hsl(var(--brand-red))" />
+        </svg>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
