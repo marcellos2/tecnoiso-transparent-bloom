@@ -20,12 +20,9 @@ const Header = () => {
     { label: "HOME", href: "#home" },
     { label: "QUEM SOMOS", href: "#sobre" },
     { label: "SERVIÇOS", href: "#servicos" },
+    { label: "CERTIFICAÇÕES", href: "#certificacoes" },
     { label: "CONTATO", href: "#contato" },
   ];
-
-  const handleScheduleClick = () => {
-    window.open("https://tecnoiso-agenda.vercel.app/", "_blank");
-  };
 
   return (
     <header 
@@ -45,22 +42,16 @@ const Header = () => {
             />
           </div>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-10">
             {menuItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] font-medium text-sm transition-colors duration-300"
+                className="text-[hsl(var(--hero-text))] hover:text-[hsl(var(--brand-red))] font-medium transition-colors duration-300"
               >
                 {item.label}
               </a>
             ))}
-            <Button
-              onClick={handleScheduleClick}
-              className="bg-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))]/90 text-white font-medium text-sm px-4 py-2"
-            >
-              AGENDAR
-            </Button>
           </nav>
 
           <div className="hidden lg:flex items-center space-x-6">
@@ -115,15 +106,6 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
-              <Button
-                onClick={() => {
-                  handleScheduleClick();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="bg-[hsl(var(--brand-red))] hover:bg-[hsl(var(--brand-red))]/90 text-white font-medium mx-4"
-              >
-                AGENDAR
-              </Button>
             </nav>
           </div>
         )}
