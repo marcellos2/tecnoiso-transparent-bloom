@@ -55,12 +55,9 @@ const HeroSection = () => {
     setCurrentSlide(index);
   };
 
-  const handleServicesClick = () => {
-    const servicesSection = document.getElementById('servicos');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const handleServicesClick = () => {
+  window.open('https://agendamento-five-delta.vercel.app/', '_blank');
+};
 
   return (
     <section id="home" className="h-[750px] relative overflow-hidden">
@@ -114,7 +111,7 @@ const HeroSection = () => {
               onClick={handleServicesClick}
               className="bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] px-8 py-5 text-base font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)] animate-scale-in rounded-full"
             >
-              FALE CONOSCO
+              AGENDAR SERVIÇOS
               <ChevronRight className="ml-2" size={18} />
             </Button>
           </div>
