@@ -1,10 +1,23 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const ContactSection = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
   const contactInfo = [
     {
       icon: MapPin,
@@ -27,6 +40,57 @@ const ContactSection = () => {
       content: "Segunda à Sexta\n07:42 às 17:30",
     },
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validação
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim() || !formData.message.trim()) {
+      toast.error("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    // Validação de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Por favor, insira um e-mail válido.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-quote-request", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      if (data?.success) {
+        toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        throw new Error(data?.error || "Erro ao enviar mensagem");
+      }
+    } catch (error: any) {
+      console.error("Error sending quote request:", error);
+      toast.error("Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato por telefone.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contato" className="py-20 bg-gradient-to-b from-background to-[hsl(var(--brand-gray))] relative overflow-hidden">
@@ -55,60 +119,106 @@ const ContactSection = () => {
                 Solicite seu Orçamento
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 relative z-10">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Nome *
-                  </label>
-                  <Input placeholder="Seu nome completo" />
+            <CardContent className="relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Nome *
+                    </label>
+                    <Input 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Seu nome completo" 
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Empresa
+                    </label>
+                    <Input 
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      placeholder="Nome da empresa" 
+                      disabled={isSubmitting}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Empresa
-                  </label>
-                  <Input placeholder="Nome da empresa" />
+                
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      E-mail *
+                    </label>
+                    <Input 
+                      type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="seu@email.com" 
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">
+                      Telefone *
+                    </label>
+                    <Input 
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="(11) 99999-9999" 
+                      disabled={isSubmitting}
+                    />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    E-mail *
-                  </label>
-                  <Input type="email" placeholder="seu@email.com" />
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Telefone *
-                  </label>
-                  <Input placeholder="(11) 99999-9999" />
-                </div>
-              </div>
 
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Serviço de Interesse
-                </label>
-                <Input placeholder="Ex: Calibração de instrumentos de pressão" />
-              </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Serviço de Interesse
+                  </label>
+                  <Input 
+                    name="service"
+                    value={formData.service}
+                    onChange={handleInputChange}
+                    placeholder="Ex: Calibração de instrumentos de pressão" 
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">
-                  Mensagem *
-                </label>
-                <Textarea 
-                  placeholder="Descreva suas necessidades e como podemos ajudá-lo..."
-                  className="min-h-[120px]"
-                />
-              </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Mensagem *
+                  </label>
+                  <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Descreva suas necessidades e como podemos ajudá-lo..."
+                    className="min-h-[120px]"
+                    disabled={isSubmitting}
+                  />
+                </div>
 
-              <Button 
-                size="lg" 
-                className="w-full bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[var(--shadow-glow)]"
-              >
-                Enviar Mensagem
-              </Button>
+                <Button 
+                  type="submit"
+                  size="lg" 
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-dark))] hover:from-[hsl(var(--brand-red-dark))] hover:to-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold shadow-[var(--shadow-red)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[var(--shadow-glow)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    "Enviar Mensagem"
+                  )}
+                </Button>
+              </form>
             </CardContent>
           </Card>
 
