@@ -13,7 +13,7 @@ const EventsSection = () => {
       description: "Evento demonstrando técnicas modernas de calibração com equipamentos de alta precisão",
       mediaUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop&crop=center",
       mediaType: "image",
-      date: "2024 - São Paulo",
+      date: "2026 - São Paulo",
       category: "Workshop"
     },
     {
@@ -22,7 +22,7 @@ const EventsSection = () => {
       description: "Apresentação sobre implementação e manutenção de sistemas de qualidade em laboratórios",
       mediaUrl: "https://res.cloudinary.com/dvqhv29io/video/upload/video_1_xtfruk.mp4",
       mediaType: "video",
-      date: "2024 - Rio de Janeiro",
+      date: "2026 - Rio de Janeiro",
       category: "Palestra"
     },
     {
@@ -31,7 +31,7 @@ const EventsSection = () => {
       description: "Discussão sobre as últimas tendências e tecnologias em metrologia para a indústria",
       mediaUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center",
       mediaType: "image",
-      date: "2024 - Belo Horizonte",
+      date: "2026 - Belo Horizonte",
       category: "Seminário"
     },
     {
@@ -40,7 +40,7 @@ const EventsSection = () => {
       description: "Capacitação prática em uso e manutenção de instrumentos de precisão",
       mediaUrl: "",
       mediaType: "",
-      date: "2024 - Curitiba",
+      date: "2026 - Curitiba",
       category: "Treinamento"
     }
   ];

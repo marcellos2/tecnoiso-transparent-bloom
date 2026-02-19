@@ -96,7 +96,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 TECNOISO TECNOLOGIA E SOLUÇÕES INDUSTRIAIS LTDA.
+            © 2026 TECNOISO TECNOLOGIA E SOLUÇÕES INDUSTRIAIS LTDA.
             | CNPJ: 17.459.428/0001-08
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
