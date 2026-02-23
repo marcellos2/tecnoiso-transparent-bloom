@@ -216,6 +216,10 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     text-shadow: none;
     outline: none;
-    border: none;
-  }
+  border: none;
+}
+
+#lovable-badge {
+  display: none !important;
+}
 }
