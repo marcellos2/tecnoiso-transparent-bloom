@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Linkedin, ShoppingBag } from "lucide-react";
 import tecnoIsoLogo from "@/assets/tecnoiso-logo.png";
 
 const Header = () => {
@@ -55,6 +55,15 @@ const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-6">
+            <a
+              href="https://tecnoiso-shop.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold text-sm hover:bg-[hsl(var(--brand-red-dark))] transition-colors duration-300"
+            >
+              <ShoppingBag size={18} />
+              SHOP
+            </a>
             <div className="flex items-center space-x-4 border-l border-[hsl(var(--hero-text))]/20 pl-6">
               <a 
                 href="https://www.instagram.com/tecnoiso/" 
@@ -106,6 +115,16 @@ const Header = () => {
                   {item.label}
                 </a>
               ))}
+              <a
+                href="https://tecnoiso-shop.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-[hsl(var(--header-text))] hover:text-[hsl(var(--brand-red))] font-semibold px-4 transition-colors duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <ShoppingBag size={18} />
+                SHOP
+              </a>
             </nav>
           </div>
         )}

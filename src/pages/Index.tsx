@@ -8,11 +8,13 @@ import EventsSection from "@/components/EventsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import WhatsAppFloatButton from "@/components/WhatsAppFloatButton"; // ADICIONE ESTA LINHA
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <SEO />
       <Header />
       <HeroSection />
       <AboutSection />
