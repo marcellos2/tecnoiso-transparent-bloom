@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Play, Pause } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const EventsSection = () => {
   const [currentEvent, setCurrentEvent] = useState(0);
@@ -10,202 +10,192 @@ const EventsSection = () => {
     {
       id: 1,
       title: "Workshop de Calibração Avançada",
-      description: "Evento demonstrando técnicas modernas de calibração com equipamentos de alta precisão",
-      mediaUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop&crop=center",
-      mediaType: "image",
-      date: "2026 - São Paulo",
+      description: "Evento demonstrando técnicas modernas de calibração com equipamentos de alta precisão. Ideal para profissionais que buscam atualização técnica e melhores práticas do setor.",
+      mediaUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=500&fit=crop&crop=center",
+      mediaType: "image" as const,
+      date: "2026",
+      location: "São Paulo, SP",
       category: "Workshop"
     },
     {
       id: 2,
       title: "Palestra Normas ISO 17025",
-      description: "Apresentação sobre implementação e manutenção de sistemas de qualidade em laboratórios",
+      description: "Apresentação sobre implementação e manutenção de sistemas de qualidade em laboratórios, abordando os requisitos da norma e cases de sucesso.",
       mediaUrl: "https://res.cloudinary.com/dvqhv29io/video/upload/video_1_xtfruk.mp4",
-      mediaType: "video",
-      date: "2026 - Rio de Janeiro",
+      mediaType: "video" as const,
+      date: "2026",
+      location: "Rio de Janeiro, RJ",
       category: "Palestra"
     },
     {
       id: 3,
       title: "Seminário Metrologia Industrial",
-      description: "Discussão sobre as últimas tendências e tecnologias em metrologia para a indústria",
-      mediaUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center",
-      mediaType: "image",
-      date: "2026 - Belo Horizonte",
+      description: "Discussão sobre as últimas tendências e tecnologias em metrologia para a indústria, com participação de especialistas renomados do setor.",
+      mediaUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=500&fit=crop&crop=center",
+      mediaType: "image" as const,
+      date: "2026",
+      location: "Belo Horizonte, MG",
       category: "Seminário"
     },
     {
       id: 4,
       title: "Treinamento Instrumentos de Medição",
-      description: "Capacitação prática em uso e manutenção de instrumentos de precisão",
-      mediaUrl: "",
-      mediaType: "",
-      date: "2026 - Curitiba",
+      description: "Capacitação prática em uso e manutenção de instrumentos de precisão, com abordagem hands-on e certificação ao final do curso.",
+      mediaUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=500&fit=crop&crop=center",
+      mediaType: "image" as const,
+      date: "2026",
+      location: "Curitiba, PR",
       category: "Treinamento"
     }
   ];
 
   useEffect(() => {
     if (!isPlaying) return;
-    
     const timer = setInterval(() => {
       setCurrentEvent((prev) => (prev + 1) % events.length);
-    }, 5000);
-
+    }, 6000);
     return () => clearInterval(timer);
   }, [isPlaying, events.length]);
 
-  const nextEvent = () => {
-    setCurrentEvent((prev) => (prev + 1) % events.length);
-  };
-
-  const prevEvent = () => {
-    setCurrentEvent((prev) => (prev - 1 + events.length) % events.length);
-  };
-
-  const pauseCarousel = () => {
-    setIsPlaying(false);
-  };
-
-  const resumeCarousel = () => {
-    setIsPlaying(true);
-  };
-
-  const currentMedia = events[currentEvent];
+  const current = events[currentEvent];
 
   return (
-    <section className="py-20 bg-transparent relative overflow-hidden">
-      {/* Decorative Geometric Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-red-500/20 to-red-600/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-tr from-blue-500/10 to-red-500/5 rounded-3xl rotate-45"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-red-500/30 rounded-lg rotate-12"></div>
+    <section className="py-24 bg-[hsl(var(--brand-black))] relative overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[hsl(var(--brand-red))]/[0.08] to-transparent" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsl(var(--brand-red))]/[0.05] rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-gray-900 to-red-600 bg-clip-text text-transparent">
-              Eventos &
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+          <div>
+            <span className="text-[hsl(var(--brand-red))] font-semibold text-sm tracking-widest uppercase mb-3 block">
+              Agenda
             </span>
-            <br />
-            <span className="text-red-600">Palestras Tecnoiso</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Acompanhe nossos principais eventos, workshops e palestras sobre metrologia e qualidade
-          </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[hsl(var(--brand-white))]">
+              Eventos &{" "}
+              <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text">
+                Palestras
+              </span>
+            </h2>
+          </div>
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="flex items-center gap-2 text-[hsl(var(--brand-white))]/60 hover:text-[hsl(var(--brand-white))] text-sm transition-colors self-start md:self-auto"
+          >
+            {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+            {isPlaying ? "Pausar" : "Continuar"}
+          </button>
         </div>
 
-        <div className="relative max-w-6xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Media Area */}
-              <div 
-                className="relative h-80 md:h-96 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden group"
-                onMouseEnter={pauseCarousel}
-                onMouseLeave={resumeCarousel}
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Media - takes 3 cols */}
+          <div className="lg:col-span-3 relative rounded-2xl overflow-hidden aspect-video bg-[hsl(var(--brand-black))]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
               >
-                {currentMedia.mediaType === "video" ? (
-                  <video 
-                    key={currentMedia.id}
-                    src={currentMedia.mediaUrl}
-                    className="w-full h-full object-cover transition-all duration-500"
+                {current.mediaType === "video" ? (
+                  <video
+                    src={current.mediaUrl}
+                    className="w-full h-full object-cover"
                     autoPlay
                     muted
                     loop
                     playsInline
                   />
-                ) : currentMedia.mediaType === "youtube" ? (
-                  <iframe
-                    key={currentMedia.id}
-                    src={`https://www.youtube.com/embed/${currentMedia.mediaUrl}?autoplay=1&mute=1&loop=1&playlist=${currentMedia.mediaUrl}&controls=0&showinfo=0&rel=0&modestbranding=1`}
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
                 ) : (
-                  <img 
-                    src={currentMedia.mediaUrl}
-                    alt={currentMedia.title}
-                    className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+                  <img
+                    src={current.mediaUrl}
+                    alt={current.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 )}
+              </motion.div>
+            </AnimatePresence>
 
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevEvent}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                
-                <button
-                  onClick={nextEvent}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                >
-                  <ChevronRight size={20} />
-                </button>
-
-
-
-
-              </div>
-
-              {/* Content Area */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="mb-4">
-                  <span className="inline-block px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-3">
-                    {currentMedia.category}
-                  </span>
-                  <p className="text-sm text-gray-500 mb-2">
-                    {currentMedia.date}
-                  </p>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 transition-all duration-500">
-                  {currentMedia.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-8 leading-relaxed transition-all duration-500">
-                  {currentMedia.description}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-600 text-white">
-                    Saiba Mais
-                  </Button>
-                  <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
-                    Ver Todos Eventos
-                  </Button>
-                </div>
-
-                {/* Pause/Resume Controls */}
-                <div className="mt-6 flex items-center gap-2 text-sm text-gray-500">
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className="underline hover:text-red-600 transition-colors"
-                  >
-                    {isPlaying ? "Pausar" : "Continuar"} apresentação
-                  </button>
-                </div>
-              </div>
+            {/* Category badge */}
+            <div className="absolute top-4 left-4 z-10">
+              <span className="px-3 py-1.5 bg-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] text-xs font-bold uppercase tracking-wider rounded-full">
+                {current.category}
+              </span>
             </div>
+
+            {/* Bottom gradient */}
+            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[hsl(var(--brand-black))] to-transparent" />
           </div>
 
-          {/* Event Indicators */}
-          <div className="flex justify-center mt-8 space-x-3">
-            {events.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentEvent(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentEvent 
-                    ? 'bg-red-600 scale-125' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
+          {/* Content - takes 2 cols */}
+          <div className="lg:col-span-2 flex flex-col justify-between">
+            <div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="flex items-center gap-4 text-[hsl(var(--brand-white))]/50 text-sm mb-4">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar size={14} />
+                      {current.date}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin size={14} />
+                      {current.location}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-white))] mb-4 leading-tight">
+                    {current.title}
+                  </h3>
+
+                  <p className="text-[hsl(var(--brand-white))]/60 leading-relaxed mb-8">
+                    {current.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              <a
+                href="#contato"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold rounded-xl hover:bg-[hsl(var(--brand-red-dark))] transition-colors duration-300"
+              >
+                Saiba Mais
+                <ArrowRight size={16} />
+              </a>
+            </div>
+
+            {/* Event selector */}
+            <div className="mt-8 flex flex-col gap-2">
+              {events.map((event, index) => (
+                <button
+                  key={event.id}
+                  onClick={() => setCurrentEvent(index)}
+                  className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
+                    index === currentEvent
+                      ? "bg-[hsl(var(--brand-red))]/10 border border-[hsl(var(--brand-red))]/30"
+                      : "border border-transparent hover:bg-[hsl(var(--brand-white))]/5"
+                  }`}
+                >
+                  <span className={`text-sm font-medium transition-colors ${
+                    index === currentEvent
+                      ? "text-[hsl(var(--brand-red))]"
+                      : "text-[hsl(var(--brand-white))]/50 hover:text-[hsl(var(--brand-white))]/80"
+                  }`}>
+                    {event.title}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
