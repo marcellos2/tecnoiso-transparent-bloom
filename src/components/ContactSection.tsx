@@ -41,24 +41,61 @@ const ContactSection = () => {
     },
   ];
 
+  const maxLengths: Record<string, number> = {
+    name: 100,
+    company: 200,
+    email: 254,
+    phone: 20,
+    service: 300,
+    message: 2000,
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    const max = maxLengths[name] || 500;
+    if (value.length > max) return;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validação
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim() || !formData.message.trim()) {
+    const trimmed = {
+      name: formData.name.trim(),
+      company: formData.company.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      service: formData.service.trim(),
+      message: formData.message.trim(),
+    };
+
+    // Validação de campos obrigatórios
+    if (!trimmed.name || !trimmed.email || !trimmed.phone || !trimmed.message) {
       toast.error("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    if (trimmed.name.length < 2) {
+      toast.error("Nome deve ter pelo menos 2 caracteres.");
       return;
     }
 
     // Validação de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(trimmed.email)) {
       toast.error("Por favor, insira um e-mail válido.");
+      return;
+    }
+
+    // Validação de telefone
+    const phoneDigits = trimmed.phone.replace(/\D/g, "");
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+      toast.error("Por favor, insira um telefone válido.");
+      return;
+    }
+
+    if (trimmed.message.length < 10) {
+      toast.error("Mensagem deve ter pelo menos 10 caracteres.");
       return;
     }
 
@@ -66,7 +103,7 @@ const ContactSection = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("send-quote-request", {
-        body: formData,
+        body: trimmed,
       });
 
       if (error) throw error;
@@ -132,6 +169,8 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       placeholder="Seu nome completo" 
                       disabled={isSubmitting}
+                      maxLength={100}
+                      autoComplete="name"
                     />
                   </div>
                   <div>
@@ -144,6 +183,8 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       placeholder="Nome da empresa" 
                       disabled={isSubmitting}
+                      maxLength={200}
+                      autoComplete="organization"
                     />
                   </div>
                 </div>
@@ -160,6 +201,8 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       placeholder="seu@email.com" 
                       disabled={isSubmitting}
+                      maxLength={254}
+                      autoComplete="email"
                     />
                   </div>
                   <div>
@@ -172,6 +215,8 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       placeholder="(11) 99999-9999" 
                       disabled={isSubmitting}
+                      maxLength={20}
+                      autoComplete="tel"
                     />
                   </div>
                 </div>
@@ -186,6 +231,7 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     placeholder="Ex: Calibração de instrumentos de pressão" 
                     disabled={isSubmitting}
+                    maxLength={300}
                   />
                 </div>
 
@@ -200,6 +246,7 @@ const ContactSection = () => {
                     placeholder="Descreva suas necessidades e como podemos ajudá-lo..."
                     className="min-h-[120px]"
                     disabled={isSubmitting}
+                    maxLength={2000}
                   />
                 </div>
 
