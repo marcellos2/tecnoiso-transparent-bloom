@@ -85,8 +85,19 @@ const TestimonialsSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length <= 100) setName(e.target.value);
+  };
+
+  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (e.target.value.length <= 500) setComment(e.target.value);
+  };
+
   const handleSubmit = () => {
-    if (!name.trim() || !comment.trim()) return;
+    const trimmedName = name.trim();
+    const trimmedComment = comment.trim();
+    if (!trimmedName || trimmedName.length < 2) return;
+    if (!trimmedComment || trimmedComment.length < 5) return;
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -256,7 +267,8 @@ const TestimonialsSection = () => {
                   <input
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handleNameChange}
+                    maxLength={100}
                     placeholder="Nome completo"
                     className="w-full px-4 py-3 bg-[hsl(var(--muted))] border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-[hsl(var(--brand-red))]/50 focus:ring-1 focus:ring-[hsl(var(--brand-red))]/20 transition-all"
                   />
@@ -289,7 +301,8 @@ const TestimonialsSection = () => {
                   <label className="block text-sm font-medium text-foreground mb-1.5">Comentário</label>
                   <textarea
                     value={comment}
-                    onChange={(e) => setComment(e.target.value)}
+                    onChange={handleCommentChange}
+                    maxLength={500}
                     placeholder="Conte sua experiência com a Tecnoiso..."
                     rows={4}
                     className="w-full px-4 py-3 bg-[hsl(var(--muted))] border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:border-[hsl(var(--brand-red))]/50 focus:ring-1 focus:ring-[hsl(var(--brand-red))]/20 transition-all resize-none"
