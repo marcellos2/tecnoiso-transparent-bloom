@@ -6,6 +6,7 @@ import PurposeSection from "@/components/PurposeSection";
 import ServicesSection from "@/components/ServicesSection";
 import EventsSection from "@/components/EventsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import CareersSection from "@/components/CareersSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
@@ -22,6 +23,7 @@ const Index = () => {
       <ServicesSection />
       <EventsSection />
       <TestimonialsSection />
+      <CareersSection />
       <ContactSection />
       <Footer />
       <WhatsAppFloatButton /> {/* ADICIONE ESTA LINHA */}

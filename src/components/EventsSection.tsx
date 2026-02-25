@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Calendar, MapPin, ArrowRight, Play, Pause } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const EventsSection = () => {
@@ -59,46 +59,38 @@ const EventsSection = () => {
 
   const current = events[currentEvent];
 
-  return (
-    <section className="py-24 bg-[hsl(var(--brand-black))] relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[hsl(var(--brand-red))]/[0.08] to-transparent" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[hsl(var(--brand-red))]/[0.05] rounded-full blur-[100px]" />
-      </div>
+  const goNext = () => setCurrentEvent((prev) => (prev + 1) % events.length);
+  const goPrev = () => setCurrentEvent((prev) => (prev - 1 + events.length) % events.length);
 
-      <div className="container mx-auto px-4 relative z-10">
+  return (
+    <section className="py-24 bg-transparent relative">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
-          <div>
-            <span className="text-[hsl(var(--brand-red))] font-semibold text-sm tracking-widest uppercase mb-3 block">
-              Agenda
+        <div className="text-center mb-16">
+          <span className="text-[hsl(var(--brand-red))] font-semibold text-sm tracking-widest uppercase mb-3 block">
+            Agenda
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+            Eventos &{" "}
+            <span className="text-[hsl(var(--brand-red))]">
+              Palestras
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[hsl(var(--brand-white))]">
-              Eventos &{" "}
-              <span className="text-transparent bg-gradient-to-r from-[hsl(var(--brand-red))] to-[hsl(var(--brand-red-light))] bg-clip-text">
-                Palestras
-              </span>
-            </h2>
-          </div>
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-2 text-[hsl(var(--brand-white))]/60 hover:text-[hsl(var(--brand-white))] text-sm transition-colors self-start md:self-auto"
-          >
-            {isPlaying ? <Pause size={14} /> : <Play size={14} />}
-            {isPlaying ? "Pausar" : "Continuar"}
-          </button>
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            Acompanhe nossos workshops, palestras e treinamentos sobre metrologia, calibração e normas técnicas.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Media - takes 3 cols */}
-          <div className="lg:col-span-3 relative rounded-2xl overflow-hidden aspect-video bg-[hsl(var(--brand-black))]">
+        {/* Main content */}
+        <div className="max-w-5xl mx-auto">
+          {/* Media area */}
+          <div className="relative rounded-2xl overflow-hidden aspect-video shadow-lg">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.id}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 className="absolute inset-0"
               >
@@ -129,22 +121,31 @@ const EventsSection = () => {
               </span>
             </div>
 
-            {/* Bottom gradient */}
-            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[hsl(var(--brand-black))] to-transparent" />
-          </div>
+            {/* Navigation arrows */}
+            <button
+              onClick={goPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={goNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
+            >
+              <ChevronRight size={20} />
+            </button>
 
-          {/* Content - takes 2 cols */}
-          <div className="lg:col-span-2 flex flex-col justify-between">
-            <div>
+            {/* Bottom gradient overlay with info */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 pt-16">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="flex items-center gap-4 text-[hsl(var(--brand-white))]/50 text-sm mb-4">
+                  <div className="flex items-center gap-4 text-white/70 text-sm mb-2">
                     <span className="flex items-center gap-1.5">
                       <Calendar size={14} />
                       {current.date}
@@ -154,48 +155,79 @@ const EventsSection = () => {
                       {current.location}
                     </span>
                   </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-white))] mb-4 leading-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                     {current.title}
                   </h3>
-
-                  <p className="text-[hsl(var(--brand-white))]/60 leading-relaxed mb-8">
+                  <p className="text-white/70 text-sm max-w-xl hidden md:block">
                     {current.description}
                   </p>
                 </motion.div>
               </AnimatePresence>
-
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[hsl(var(--brand-red))] text-[hsl(var(--brand-white))] font-semibold rounded-xl hover:bg-[hsl(var(--brand-red-dark))] transition-colors duration-300"
-              >
-                Saiba Mais
-                <ArrowRight size={16} />
-              </a>
             </div>
+          </div>
 
-            {/* Event selector */}
-            <div className="mt-8 flex flex-col gap-2">
-              {events.map((event, index) => (
+          {/* Progress dots + play/pause */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+            </button>
+            <div className="flex gap-2">
+              {events.map((_, index) => (
                 <button
-                  key={event.id}
+                  key={index}
                   onClick={() => setCurrentEvent(index)}
-                  className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
-                    index === currentEvent
-                      ? "bg-[hsl(var(--brand-red))]/10 border border-[hsl(var(--brand-red))]/30"
-                      : "border border-transparent hover:bg-[hsl(var(--brand-white))]/5"
-                  }`}
+                  className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300"
+                  style={{ width: index === currentEvent ? 40 : 16 }}
                 >
-                  <span className={`text-sm font-medium transition-colors ${
-                    index === currentEvent
-                      ? "text-[hsl(var(--brand-red))]"
-                      : "text-[hsl(var(--brand-white))]/50 hover:text-[hsl(var(--brand-white))]/80"
-                  }`}>
-                    {event.title}
-                  </span>
+                  <div className="absolute inset-0 bg-muted-foreground/20 rounded-full" />
+                  {index === currentEvent && (
+                    <motion.div
+                      className="absolute inset-0 bg-[hsl(var(--brand-red))] rounded-full"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: isPlaying ? 6 : 0.3 }}
+                      style={{ transformOrigin: "left" }}
+                    />
+                  )}
+                  {index !== currentEvent && index < currentEvent && (
+                    <div className="absolute inset-0 bg-[hsl(var(--brand-red))]/50 rounded-full" />
+                  )}
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Event cards below */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+            {events.map((event, index) => (
+              <button
+                key={event.id}
+                onClick={() => setCurrentEvent(index)}
+                className={`text-left p-4 rounded-xl transition-all duration-300 border ${
+                  index === currentEvent
+                    ? "border-[hsl(var(--brand-red))]/40 bg-[hsl(var(--brand-red))]/5 shadow-sm"
+                    : "border-border bg-background hover:border-[hsl(var(--brand-red))]/20 hover:bg-muted/50"
+                }`}
+              >
+                <span className={`text-xs font-semibold uppercase tracking-wider ${
+                  index === currentEvent ? "text-[hsl(var(--brand-red))]" : "text-muted-foreground"
+                }`}>
+                  {event.category}
+                </span>
+                <h4 className={`text-sm font-medium mt-1 leading-snug ${
+                  index === currentEvent ? "text-foreground" : "text-muted-foreground"
+                }`}>
+                  {event.title}
+                </h4>
+                <span className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                  <MapPin size={10} />
+                  {event.location}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
