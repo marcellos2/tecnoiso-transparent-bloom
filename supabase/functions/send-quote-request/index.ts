@@ -155,9 +155,9 @@ const handler = async (req: Request): Promise<Response> => {
     const recipients = ["mclsouza1613ad@gmail.com", "marcelinosouza.dev@gmail.com"];
 
     const emailContent = `
-Nova Solicitação de Orçamento - Tecnoiso
+Nova Solicitacao de Orcamento - Tecnoiso
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----------------------------------------
 
 DADOS DO CLIENTE:
 
@@ -166,19 +166,19 @@ Empresa: ${safeCompany}
 E-mail: ${safeEmail}
 Telefone: ${safePhone}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----------------------------------------
 
-SERVIÇO DE INTERESSE:
+SERVICO DE INTERESSE:
 ${safeService}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----------------------------------------
 
 MENSAGEM:
 ${safeMessage}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----------------------------------------
 
-Este e-mail foi enviado automaticamente pelo formulário de contato do site Tecnoiso.
+Este e-mail foi enviado automaticamente pelo formulario de contato do site Tecnoiso.
     `;
 
     const htmlContent = `
@@ -246,9 +246,10 @@ Este e-mail foi enviado automaticamente pelo formulário de contato do site Tecn
     await client.send({
       from: smtpEmail,
       to: recipients,
-      subject: `[Tecnoiso] Nova Solicitação de Orçamento - ${safeName}`,
-      content: emailContent,
+      subject: `[Tecnoiso] Nova Solicitacao de Orcamento - ${safeName}`,
+      content: "auto",
       html: htmlContent,
+      encoding: "base64",
     });
 
     await client.close();
