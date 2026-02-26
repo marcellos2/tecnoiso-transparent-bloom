@@ -4,6 +4,7 @@ import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 const ALLOWED_ORIGINS = [
   "https://tecnoiso.com.br",
   "https://www.tecnoiso.com.br",
+  "https://tecnoiso.vercel.app",
   "https://id-preview--f5d781a9-8828-4b0f-b424-1111b3ac3959.lovable.app",
 ];
 
