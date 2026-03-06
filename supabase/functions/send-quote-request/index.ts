@@ -152,7 +152,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
     });
 
-    const recipients = ["mclsouza1613ad@gmail.com", "marcelinosouza.dev@gmail.com"];
+    const recipients = ["mclsouza1613ad@gmail.com", "marcelinosouza.dev@gmail.com", "maristela@tecnoiso.com"];
 
     const emailContent = `
 Nova Solicitacao de Orcamento - Tecnoiso
